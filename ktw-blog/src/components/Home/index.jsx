@@ -1,11 +1,14 @@
 import React from 'react'
-
 import './Home.scss'
+
+import Menu from './Menu'
+import Contents from './Contents'
 
 const Home = () => {
   return (
     <main>
-      test!
+      <Menu />
+      <Contents />
     </main>
   )
 }
