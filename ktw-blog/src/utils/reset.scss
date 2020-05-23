@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+html, body,
+h1, h2, h3, h4, h5, h6,
+ul, ol, p, dl, dt, dd,
+input, button, select {
+  padding: 0;
+  margin: 0;
+}
+
+body,input,textarea,select,button,table {
+  font-family: '나눔 고딕', NanumGothic, '돋움', Dotum, sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+img {
+  vertical-align: top;
+}
+
+ul, ol {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+em {
+  font-style: normal;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+input, select {
+  border: 0;
+}
+
+.blind {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
