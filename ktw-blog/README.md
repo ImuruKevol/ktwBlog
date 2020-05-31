@@ -1,12 +1,24 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## 저작권
+
 - copyright를 박아놨긴 한데 가져다 쓸 사람은 쓰세요. 이 개떡같은 소스를 가져다 쓸 사람이 있을진 모르겠지만...
 
 
-## 개선할 점(생각나는대로 추가)
-- 레이아웃 비율 -> fix size(& 반응형 추가)
+## 메모장
 
+Spread: 사이트 접속시 보여지는 컨텐츠(글들 쫙 그냥 뿌려줌)
+Detail: 글 클릭시 나오는 진짜 내용
+
+
+## 개선할 점(생각나는대로 추가)
+
+- 안에 있는 메뉴에 걸려있는 네거티브 마진을 부모로 옮기기
+- 스프레드에서 뿌리는 레이아웃을 리니어나 카드 뭐 이런걸로 선택 가능하게 하면 좋을듯?
+- 섹셔닝 태그에 hn 태그 정리하기
+- 레이아웃 비율 -> fix size(& 반응형 추가)
+- 코드 스플리팅
+  - ssr
 
 
 ## Available Scripts
