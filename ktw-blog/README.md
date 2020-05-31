@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## 저작권
+- copyright를 박아놨긴 한데 가져다 쓸 사람은 쓰세요. 이 개떡같은 소스를 가져다 쓸 사람이 있을진 모르겠지만...
+
+
+## 개선할 점(생각나는대로 추가)
+- 레이아웃 비율 -> fix size(& 반응형 추가)
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:

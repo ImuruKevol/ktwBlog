@@ -5,7 +5,9 @@ const Footer = () => {
 
   return (
     <footer>
-      this is footer
+      Copyright(c)2020 권태욱(
+        <a href="https://github.com/imurukevol">ImuruKevol</a>
+      ) All rights reserved.
     </footer>
   )
 }
