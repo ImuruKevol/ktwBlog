@@ -1,21 +1,19 @@
-import React, { useContext, useEffect } from "react";
-
+import React, { useEffect, useContext } from "react";
 import propTypes from "prop-types";
-
 import MarkdownWrapper from "../../style/MarkdownWrapper";
-import { CellContext, CellDispatchContext } from "../../../../stores/CellStore";
-import { cellActionCreator } from "../../../../actions/CellAction";
-import { EVENT_TYPE } from "../../../../enums";
-import { useCellState, useKeys } from "../../../../utils";
+import { CellContext, CellDispatchContext } from "../../../../../stores/CellStore";
+import { cellActionCreator } from "../../../../../actions/CellAction";
+import { EVENT_TYPE } from "../../../../../enums";
+import { useCellState, useKeys } from "../../../../../utils";
 
 import {
   getSelection,
   saveCursorPosition,
   blockRelease,
 } from "../Markdown/handler";
-import { newCell } from "../Heading/handler";
+import { newCell } from "./handler";
 
-const QuoteCell = ({ cellUuid }) => {
+const HeadingCell = ({ cellUuid }) => {
   const { state } = useContext(CellContext);
   const dispatch = useContext(CellDispatchContext);
   const { currentIndex, cellIndex, tag, text, placeholder } = useCellState(
@@ -81,13 +79,14 @@ const QuoteCell = ({ cellUuid }) => {
         const emptyElement = document.createTextNode("");
         inputRef.current.appendChild(emptyElement);
       }
+
       const caretOffset =
         cursor.start > inputRef.current.firstChild.length
           ? inputRef.current.firstChild.length
           : cursor.start;
       window.getSelection().collapse(inputRef.current.firstChild, caretOffset);
     }
-  }, [inputRef]);
+  }, [cursor.start, inputRef]);
 
   const onClick = () => {
     dispatch(cellActionCreator.focusMove(cellUuid));
@@ -105,7 +104,7 @@ const QuoteCell = ({ cellUuid }) => {
       contentEditable={!state.isShared}
       intoShiftBlock={intoShiftBlock}
       isCurrentCell={isFocus}
-      isQuote
+      isQuote={false}
       placeholder={placeholder}
       onClick={onClick}
       onBlur={onBlur}
@@ -118,8 +117,8 @@ const QuoteCell = ({ cellUuid }) => {
   );
 };
 
-QuoteCell.propTypes = {
+HeadingCell.propTypes = {
   cellUuid: propTypes.string.isRequired,
 };
 
-export default QuoteCell;
+export default HeadingCell;

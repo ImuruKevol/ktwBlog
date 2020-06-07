@@ -17,9 +17,6 @@ GraphQL을 써볼까...
 ## 개선할 점(생각나는대로 추가)
 
 - 안에 있는 메뉴에 걸려있는 네거티브 마진을 부모로 옮기기
-- components 디렉토리에 들어간 HOME을 pages로 옮기고 내용물은 components에 유지
-  - editor도?
-- utils 정리
 - flux로 되어있는 마크다운 에디터를 redux로 바꾸기
 - isShared 걷어내기
 - mysql 말고 postgresql 쓰기

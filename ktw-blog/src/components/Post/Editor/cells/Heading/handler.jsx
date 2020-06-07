@@ -1,4 +1,4 @@
-import { cellActionCreator } from "../../../../actions/CellAction";
+import { cellActionCreator } from "../../../../../actions/CellAction";
 
 const newCell = (cellDispatch) => {
   cellDispatch(cellActionCreator.new());

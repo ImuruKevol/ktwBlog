@@ -1,11 +1,10 @@
 import React, { useEffect, useContext } from "react";
 import propTypes from "prop-types";
-
 import MarkdownWrapper from "../../style/MarkdownWrapper";
-import { PLACEHOLDER, EVENT_TYPE } from "../../../../enums";
-import { useKeys, uuidManager, attachDefaultHandlers } from "../../../../utils";
-import { CellContext, CellDispatchContext } from "../../../../stores/CellStore";
-import { cellActionCreator } from "../../../../actions/CellAction";
+import { PLACEHOLDER, EVENT_TYPE } from "../../../../../enums";
+import { CellContext, CellDispatchContext } from "../../../../../stores/CellStore";
+import { cellActionCreator } from "../../../../../actions/CellAction";
+import { useKeys, uuidManager, attachDefaultHandlers } from "../../../../../utils";
 import {
   getSelection,
   newCell,
@@ -161,7 +160,7 @@ const MarkdownCell = ({ cellUuid }) => {
     //   e.returnValue = "정말로 닫으시겠습니까?";
     // };
     // window.addEventListener("beforeunload", isSaved);
-  }, [inputRef]);
+  }, [cursor.start, inputRef]);
 
   const onKeyUp = (e) => {
     const { textContent } = e.target;

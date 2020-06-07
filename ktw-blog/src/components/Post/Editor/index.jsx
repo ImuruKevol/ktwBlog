@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useRef } from "react";
-import styled from "styled-components";
+import React, { useContext, useEffect, useRef } from "./node_modules/react";
+import styled from "./node_modules/styled-components";
 
 import { CellContext, CellDispatchContext } from "../../stores/CellStore";
 import { cellActionCreator } from "../../actions/CellAction";

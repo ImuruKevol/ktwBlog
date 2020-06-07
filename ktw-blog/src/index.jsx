@@ -10,26 +10,15 @@ import Footer from './components/Footer';
 import SimpleModal from "./components/common/SimpleModal";
 import * as serviceWorker from './serviceWorker';
 
-import './utils/style/reset.scss';
+import '../public/style/reset.scss';
 import './index.css';
 
 dotenv.config();
 
 const GlobalStyle = createGlobalStyle`
   body {
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: 16px;
+    background-color: ${THEME.DARK.THEME_COLOR_1};
     color: ${THEME.VS_CODE.FONT};
-
-    margin: 0;
-    padding: 0;
-    box-sizing: "border-box";
-    ul {
-      margin: 0;
-    }
-    ol {
-      margin: 0;
-    }
 }
 `;
 

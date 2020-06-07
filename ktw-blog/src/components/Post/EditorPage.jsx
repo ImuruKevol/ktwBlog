@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import EditorComponent from "../components/editor/EditorComponent";
-import { THEME } from "../enums";
-import { CellStore } from "../stores/CellStore";
+import Editor from "./Editor";
+import { THEME } from "../../enums";
+import { CellStore } from "../../stores/CellStore";
 
 const EditorWindowLayout = styled.div`
   position: relative;
@@ -67,7 +67,7 @@ const EditorPage = () => {
       <CellStore>
         <EditorWindowLayout>
           <MarkdownWindowLayout>
-            <EditorComponent />
+            <Editor />
           </MarkdownWindowLayout>
         </EditorWindowLayout>
       </CellStore>

@@ -2,10 +2,10 @@ import React, { useEffect, useContext } from "react";
 import propTypes from "prop-types";
 
 import MarkdownWrapper from "../../style/MarkdownWrapper";
-import { CellContext, CellDispatchContext } from "../../../../stores/CellStore";
-import { cellActionCreator } from "../../../../actions/CellAction";
-import { EVENT_TYPE } from "../../../../enums";
-import { useCellState, useKeys } from "../../../../utils";
+import { CellContext, CellDispatchContext } from "../../../../../stores/CellStore";
+import { cellActionCreator } from "../../../../../actions/CellAction";
+import { EVENT_TYPE } from "../../../../../enums";
+import { useCellState, useKeys } from "../../../../../utils";
 
 import {
   getSelection,
@@ -113,7 +113,7 @@ const ListCell = ({ cellUuid }) => {
           : cursor.start;
       window.getSelection().collapse(inputRef.current.firstChild, caretOffset);
     }
-  }, [inputRef]);
+  }, [cursor.start, inputRef]);
 
   const onClick = () => {
     dispatch(cellActionCreator.focusMove(cellUuid));

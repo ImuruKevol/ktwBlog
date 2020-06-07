@@ -1,6 +1,5 @@
-import { cellActionCreator } from "../../../../actions/CellAction";
-import getType from "../../../../utils/getType";
-import getStart from "../../../../utils/getStart";
+import { cellActionCreator } from "../../../../../actions/CellAction";
+import { getType, getStart } from "../../../../../utils"
 import { cellGenerator } from "../CellGenerator";
 
 const getSelection = () => {

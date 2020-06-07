@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import propTypes from "prop-types";
 import styled from "styled-components";
-import { CellContext, CellDispatchContext } from "../../../../stores/CellStore";
-import { cellActionCreator } from "../../../../actions/CellAction";
-import { useCellState, useKeys, getChecksumAllFalse } from "../../../../utils";
-import { EVENT_TYPE } from "../../../../enums";
+import { CellContext, CellDispatchContext } from "../../../../../stores/CellStore";
+import { cellActionCreator } from "../../../../../actions/CellAction";
+import { useCellState, useKeys, getChecksumAllFalse } from "../../../../../utils";
+import { EVENT_TYPE } from "../../../../../enums";
 import { focusPrev, focusNext } from "../Markdown/handler";
 
 const CodeCellWrapper = styled.p`
@@ -72,7 +72,7 @@ const CodeCell = ({ cellUuid }) => {
 
       window.getSelection().collapse(inputRef.current.firstChild, cursorPos);
     }
-  }, [inputRef]);
+  }, [cursorPos, inputRef]);
 
   // ------------ handler -----------
   const optionCommandUpEvent = () => {
