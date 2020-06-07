@@ -1,10 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## 저작권
-
-- copyright를 박아놨긴 한데 가져다 쓸 사람은 쓰세요. 이 개떡같은 소스를 가져다 쓸 사람이 있을진 모르겠지만...
-
-
 ## 메모장
 
 Spread: 사이트 접속시 보여지는 컨텐츠(글들 쫙 그냥 뿌려줌)
