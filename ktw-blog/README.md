@@ -10,18 +10,25 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Spread: 사이트 접속시 보여지는 컨텐츠(글들 쫙 그냥 뿌려줌)
 GraphQL을 써볼까...
 
-본문으로 건너뛰기(스킵 메뉴) 추가하기
-
 
 ## 개선할 점(생각나는대로 추가)
 
+- home page의 category 순서 변경 가능하게
+  - 네이버 뉴스 페이지에서 순서 변경하는거처럼
+
 - flux로 되어있는 마크다운 에디터를 redux로 바꾸기
+
 - isShared 걷어내기
   - 이거 편집 금지 옵션으로 쓰고 있었으니 그냥 글 편집모드 플래그로 쓰면 될 듯? 재활용 개이득
+
 - mysql 말고 postgresql 쓰기
+
 - 스프레드에서 뿌리는 레이아웃을 리니어나 카드 뭐 이런걸로 선택 가능하게 하면 좋을듯?
+
 - 섹셔닝 태그에 hn 태그 정리하기
+
 - 레이아웃(Header, Footer, etc...) 비율 -> fix size(& 반응형 추가)
+
 - 코드 스플리팅
   - ssr
 

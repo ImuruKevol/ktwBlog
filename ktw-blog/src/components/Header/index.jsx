@@ -5,7 +5,8 @@ const Header = () => {
 
   return (
     <header>
-      this is header
+      {/* @todo React Router Link 추가하기 */}
+      Kevol Writer(가제)
     </header>
   )
 }

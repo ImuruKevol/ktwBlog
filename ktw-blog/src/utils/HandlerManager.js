@@ -211,6 +211,17 @@ const makeKeyHandler = {
     };
   },
 
+  [EVENT_TYPE.CTRL_B]: (handler) => {
+    return (e) => {
+      const isCtrl = checkOsDependentCtrl(e);
+      const isCharB = e.key === "b";
+      if (isCtrl && isCharB) {
+        e.preventDefault();
+        handler(e);
+      }
+    };
+  },
+
   [EVENT_TYPE.CTRL_X]: (handler) => {
     return (e) => {
       const isCtrl = checkOsDependentCtrl(e);

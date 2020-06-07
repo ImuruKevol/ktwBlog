@@ -12,6 +12,7 @@ const EVENT_TYPE = {
   SHIFT_ARROW_DOWN: "shift_arrow_down",
   OPTION_COMMAND_DOWN: "option_command_down",
   CTRL_A: "ctrl_a",
+  CTRL_B: "ctrl_b",
   CTRL_X: "ctrl_x",
   CTRL_C: "ctrl_c",
   CTRL_V: "ctrl_v",

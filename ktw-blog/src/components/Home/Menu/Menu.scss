@@ -6,7 +6,7 @@
   position: fixed;
   margin-left: -200px;
   width: 240px;
-  height: 85%;
+  height: calc(100% - 54px);
 }
 
 .main_menu {
@@ -30,10 +30,12 @@
 
   &_toggle_btn {
     display: inline-block;
-    width: 40px;
-    height: 40px;
-    font-size: 25px;
-    line-height: 40px;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    background-color: mediumpurple;
+    color: darkslateblue;
     transition: all 0.3s ease 0s;
   }
 }
