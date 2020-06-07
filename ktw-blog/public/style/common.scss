@@ -26,7 +26,9 @@
   white-space: nowrap;
 }
 
-@mixin multi-line-ellipsis($line-clamp) {
+@mixin multi-line-ellipsis($line-clamp, $line-height) {
+  height: $line-clamp * $line-height;
+  line-height: $line-height;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;

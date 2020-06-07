@@ -5,4 +5,10 @@ footer{
   height: 5vh;
   background-color: darkgrey;
   text-align: center;
+
+  a {
+    color: darkblue;
+    text-decoration: underline;
+    margin: 0 4px;
+  }
 }

@@ -4,11 +4,41 @@ import './Card.scss'
 const Card = () => {
 
   return (
-    <div className="">
+    <div className="card">
       {/* 썸네일 추가? */}
       <strong>this is card title</strong>
-      {/* 100자나 한 그정도만 읽어서 scss에 멀티라인 include로 2~3줄정도*/}
-      <p>this is card body</p>
+      <p>this is card bodythis is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+      this is card body
+
+      </p>
     </div>
   )
 }

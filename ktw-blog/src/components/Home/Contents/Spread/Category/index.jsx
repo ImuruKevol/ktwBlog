@@ -6,9 +6,12 @@ import Card from './Card'
 const Category = () => {
 
   return (
-    <section className="">
+    <section className="category">
       {/* map으로 뿌려야댐 */}
-      {/* hn태그 추가 */}
+      {/* strong -> hn태그로 변경 */}
+      <strong className="category-name">Category Name</strong>
+      <Card />
+      <Card />
       <Card />
       <Card />
       <Card />

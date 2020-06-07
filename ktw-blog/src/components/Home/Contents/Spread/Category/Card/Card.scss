@@ -1,1 +1,38 @@
 @charset 'utf-8';
+
+@import '../../../../../../../public/style/common.scss';
+
+.card {
+  display: inline-block;
+  width: 240px;
+  height: 140px;
+  margin: 5px 10px;
+  border: 1px solid lightgray;
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    border: 1.5px solid deepskyblue;
+    
+    strong {
+      text-decoration: underline;
+    }
+
+    p {
+      text-decoration: underline;
+    }
+  }
+
+  strong {
+    display: block;
+    font-size: 18px;
+    line-height: 40px;
+    @include one-line-ellipsis;
+  }
+
+  p {
+    font-size: 14px;
+    @include multi-line-ellipsis(3, 24px);
+
+  }
+}

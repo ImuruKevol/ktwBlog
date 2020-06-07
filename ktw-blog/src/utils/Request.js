@@ -1,7 +1,7 @@
-import createDebug from "debug";
+// import createDebug from "debug";
 import axios from "axios";
 
-const debug = createDebug("boost:request");
+// const debug = createDebug("boost:request");
 
 const BASE_URL = process.env.SERVER_URL;
 

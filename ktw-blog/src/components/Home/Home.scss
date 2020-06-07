@@ -1,6 +1,6 @@
 @charset 'utf-8';
 
-@import '../../utils/common.scss';
+@import '../../../public/style/common';
 
 main {
   width: 100%;
@@ -13,40 +13,4 @@ main {
   // footer 땡기기
   margin-bottom: -5vh;
   padding-bottom: 5vh;
-}
-
-.menu {
-  position: fixed;
-  width: 240px;
-  height: 85%;
-}
-
-.main_menu {
-  float: left;
-  margin-left: -200px;
-  background-color: lightblue;
-  width: 200px;
-  height: 100%;
-  transition: all 0.3s ease 0s;
-  
-  @include clear;
-
-  &.on,
-  &_toggle_btn.on {
-    transform: translateX(200px);
-  }
-
-  &.close,
-  &_toggle_btn.close {
-    transform: translateX(0px);
-  }
-
-  &_toggle_btn {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    font-size: 25px;
-    line-height: 40px;
-    transition: all 0.3s ease 0s;
-  }
 }

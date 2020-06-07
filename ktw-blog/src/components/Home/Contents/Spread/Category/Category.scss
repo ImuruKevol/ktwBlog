@@ -1,1 +1,14 @@
 @charset 'utf-8';
+
+.category {
+  & + & {
+    margin-top: 20px;
+  }
+
+  &-name {
+    display: block;
+    font-size: 18px;
+    line-height: 30px;
+    color: dodgerblue;
+  }
+}
