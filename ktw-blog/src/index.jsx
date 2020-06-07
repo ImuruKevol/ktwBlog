@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import dotenv from 'dotenv';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import { THEME } from "./enums";
@@ -11,6 +12,8 @@ import * as serviceWorker from './serviceWorker';
 
 import './utils/common.scss';
 import './index.css';
+
+dotenv.config();
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -27,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
     ol {
       margin: 0;
     }
-  }
+}
 `;
 
 ReactDOM.render(

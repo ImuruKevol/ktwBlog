@@ -17,6 +17,8 @@ Detail: 글 클릭시 나오는 진짜 내용
 - components 디렉토리에 들어간 HOME을 pages로 옮기고 내용물은 components에 유지
   - editor도?
 - utils 정리
+- flux로 되어있는 마크다운 에디터를 redux로 바꾸기
+- isShared 걷어내기
 - 스프레드에서 뿌리는 레이아웃을 리니어나 카드 뭐 이런걸로 선택 가능하게 하면 좋을듯?
 - 섹셔닝 태그에 hn 태그 정리하기
 - 레이아웃 비율 -> fix size(& 반응형 추가)

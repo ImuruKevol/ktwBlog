@@ -29,13 +29,6 @@ const CELL_ACTION = {
     COPY: "cell/clipboard/copy",
     PASTE: "cell/clipboard/paste",
   },
-  TOOLBAR: {
-    SAVE: "cell/toolbar/save",
-    LOAD: "cell/toolbar/load",
-    LOAD_FINISH: "cell/toolbar/load-finish",
-    SHARE_LOAD: "cell/toolbar/share/load",
-    SHARE_LOAD_FINISH: "cell/toolbar/share/load-finish",
-  },
 };
 
 const cellActionCreator = {
@@ -236,36 +229,6 @@ const cellActionCreator = {
   paste() {
     return {
       type: CELL_ACTION.CLIPBOARD.PASTE,
-    };
-  },
-
-  save() {
-    return {
-      type: CELL_ACTION.TOOLBAR.SAVE,
-    };
-  },
-
-  load() {
-    return {
-      type: CELL_ACTION.TOOLBAR.LOAD,
-    };
-  },
-
-  loadFinish() {
-    return {
-      type: CELL_ACTION.TOOLBAR.LOAD_FINISH,
-    };
-  },
-
-  shareLoad() {
-    return {
-      type: CELL_ACTION.TOOLBAR.SHARE_LOAD,
-    };
-  },
-
-  shareLoadFinish() {
-    return {
-      type: CELL_ACTION.TOOLBAR.SHARE_LOAD_FINISH,
     };
   },
 };

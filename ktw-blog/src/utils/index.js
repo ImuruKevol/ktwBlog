@@ -11,7 +11,6 @@ import {
 import useCellState from "./useCellState";
 import { request } from "./Request";
 import utils from "./Common";
-import socketManager from "./SocketManager";
 import modalManager from "./ModalManager";
 
 export {
@@ -26,6 +25,5 @@ export {
   useCellState,
   useReducerAsync,
   request,
-  socketManager,
   modalManager,
 };

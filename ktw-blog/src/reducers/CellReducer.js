@@ -6,7 +6,6 @@ import {
   block,
   target,
   clipboard,
-  toolbar,
 } from "./CellReducerHandler";
 
 const debug = createDebug("boost:reducer:cell");
@@ -245,43 +244,6 @@ const cellReducerHandler = {
     return {
       ...state,
       ...result,
-    };
-  },
-
-  [CELL_ACTION.TOOLBAR.SAVE]: (state) => {
-    const { cellManager } = state;
-
-    toolbar.save(cellManager);
-
-    return state;
-  },
-
-  [CELL_ACTION.TOOLBAR.LOAD]: (state) => {
-    return {
-      ...state,
-      isLoading: true,
-    };
-  },
-
-  [CELL_ACTION.TOOLBAR.LOAD_FINISH]: (state) => {
-    return {
-      ...state,
-      isLoading: false,
-    };
-  },
-
-  [CELL_ACTION.TOOLBAR.SHARE_LOAD]: (state) => {
-    return {
-      ...state,
-      isShared: true,
-      isLoading: true,
-    };
-  },
-
-  [CELL_ACTION.TOOLBAR.SHARE_LOAD_FINISH]: (state) => {
-    return {
-      ...state,
-      isLoading: false,
     };
   },
 };
