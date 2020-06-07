@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 import SimpleModal from "./components/common/SimpleModal";
 import * as serviceWorker from './serviceWorker';
 
-import './utils/common.scss';
+import './utils/style/reset.scss';
 import './index.css';
 
 dotenv.config();
@@ -18,7 +18,7 @@ dotenv.config();
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: 19px;
+    font-size: 16px;
     color: ${THEME.VS_CODE.FONT};
 
     margin: 0;
@@ -41,7 +41,6 @@ ReactDOM.render(
       {/* <Switch>
         <Route exact path="/" component={MainPage} />
         <Route exact path="/editor" component={EditorPage} />
-        <Route path="/:shareId" component={MainPage} />
       </Switch> */}
       <Header />
       <Home />

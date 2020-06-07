@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import EditorComponent from "../src/components/editor/EditorComponent";
+import EditorComponent from "../components/editor/EditorComponent";
 import { THEME } from "../enums";
-import { CellStore } from "../src/stores/CellStore";
+import { CellStore } from "../stores/CellStore";
 
 const EditorWindowLayout = styled.div`
   position: relative;
