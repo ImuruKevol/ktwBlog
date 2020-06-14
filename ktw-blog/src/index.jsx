@@ -25,10 +25,6 @@ ReactDOM.render(
     <BrowserRouter>
       <GlobalStyle />
       <SimpleModal />
-      {/* <Switch>
-        <Route exact path="/" component={MainPage} />
-        <Route exact path="/editor" component={EditorPage} />
-      </Switch> */}
       <Header />
       <Home />
       <Footer />

@@ -1,12 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Header.scss'
 
 const Header = () => {
 
   return (
     <header>
-      {/* @todo React Router Link 추가하기 */}
-      Kevol Writer(가제)
+      <Link to="/">
+        Kevol Writer(가제)
+      </Link>
     </header>
   )
 }

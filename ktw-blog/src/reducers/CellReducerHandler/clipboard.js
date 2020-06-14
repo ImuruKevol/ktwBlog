@@ -1,6 +1,6 @@
 import { uuid } from "uuidv4";
 
-import { cellGenerator } from "../../components/editor/cells/CellGenerator";
+import { cellGenerator } from "../../components/Post/Editor/cells/CellGenerator";
 import { uuidManager } from "../../utils";
 
 const copy = (cellManager, block) => {

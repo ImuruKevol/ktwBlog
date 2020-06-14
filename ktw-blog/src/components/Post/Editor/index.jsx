@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useRef } from "./node_modules/react";
-import styled from "./node_modules/styled-components";
+import React, { useContext, useEffect, useRef } from "react";
 
-import { CellContext, CellDispatchContext } from "../../stores/CellStore";
-import { cellActionCreator } from "../../actions/CellAction";
+import { CellContext, CellDispatchContext } from "../../../stores/CellStore";
+import { cellActionCreator } from "../../../actions/CellAction";
 import { setGenerator } from "./cells/CellGenerator";
-import { uuidManager } from "../../utils";
+import { uuidManager } from "../../../utils";
 import {
   MarkdownCell,
   HeadingCell,
@@ -12,12 +11,6 @@ import {
   QuoteCell,
   CodeCell,
 } from "./cells";
-
-const EditorComponentWrapper = styled.section`
-  width: 99%;
-  display: flex;
-  flex-direction: column;
-`;
 
 setGenerator("p", (uuid) => <MarkdownCell cellUuid={uuid} />);
 setGenerator("code", (uuid) => <CodeCell cellUuid={uuid} />);
@@ -31,7 +24,7 @@ setGenerator("ul", (uuid) => <ListCell cellUuid={uuid} />);
 setGenerator("ol", (uuid) => <ListCell cellUuid={uuid} />);
 setGenerator("blockquote", (uuid) => <QuoteCell cellUuid={uuid} />);
 
-const EditorComponent = () => {
+const EditorComponent = ({ className }) => {
   const { state } = useContext(CellContext);
   const cellDispatch = useContext(CellDispatchContext);
   const { cellManager } = state;
@@ -59,13 +52,13 @@ const EditorComponent = () => {
   }, [cellDispatch, state.cellManager.cells.length]);
 
   return (
-    <EditorComponentWrapper>
+    <div className={className}>
       {cells.map((cell, cellIndex) => {
         const uuidArray = uuidManager.getUuidArray();
         const key = uuidArray[cellIndex];
         return <React.Fragment key={key}>{cell}</React.Fragment>;
       })}
-    </EditorComponentWrapper>
+    </div>
   );
 };
 

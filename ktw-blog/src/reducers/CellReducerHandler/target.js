@@ -1,6 +1,6 @@
 import { uuidManager } from "../../utils";
 import common from "./common";
-import { cellGenerator } from "../../components/editor/cells/CellGenerator";
+import { cellGenerator } from "../../components/Post/Editor/cells/CellGenerator";
 
 const { newEmptyCell } = common;
 

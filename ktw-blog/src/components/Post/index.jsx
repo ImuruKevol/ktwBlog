@@ -1,14 +1,33 @@
 import React from 'react'
-import './Detail.scss'
+import styled from "styled-components";
 
-const Detail = () => {
+import Editor from "./Editor";
+import { THEME } from "../../enums";
+import { CellStore } from "../../stores/CellStore";
 
+import './Post.scss';
+
+const BackgroundTheme = styled.div`
+  height: 100%;
+  background-color: ${THEME.VS_CODE.EDITOR};
+`;
+
+const Post = () => {
+  //todo scss를 styled로 바꾸고 디렉토리 정리하기
   return (
-    <div className="">
-      
-    </div>
+    <>
+      <CellStore>
+        <BackgroundTheme>
+          <section className="post">
+            <header>
+              <strong>임시 타이틀 영역</strong>
+            </header>
+            <Editor className="post-editor" />
+          </section>
+        </BackgroundTheme>
+      </CellStore>
+    </>
   )
 }
-// contenteditable 속성을 이용하여 페이지 하나에서 처리할 수 있게 하기
 
-export default Detail
+export default Post;

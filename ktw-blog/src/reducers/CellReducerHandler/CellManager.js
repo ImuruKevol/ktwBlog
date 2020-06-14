@@ -1,6 +1,6 @@
 import { uuid } from "uuidv4";
 import { utils, uuidManager } from "../../utils";
-import { cellGenerator } from "../../components/editor/cells/CellGenerator";
+import { cellGenerator } from "../../components/Post/Editor/cells/CellGenerator";
 
 const { splice } = utils;
 
