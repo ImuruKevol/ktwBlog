@@ -250,7 +250,6 @@ const cellReducerHandler = {
 
 const cellReducer = (state, action) => {
   const handler = cellReducerHandler[action.type];
-
   if (handler === undefined) {
     return state;
   }

@@ -12,7 +12,10 @@ const BackgroundTheme = styled.div`
   background-color: ${THEME.VS_CODE.EDITOR};
 `;
 
-const Post = () => {
+const Post = ({match}) => {
+  const { user, postId } = match.params;
+  console.log(user, postId)
+
   //todo scss를 styled로 바꾸고 디렉토리 정리하기
   return (
     <>

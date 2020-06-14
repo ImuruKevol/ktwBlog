@@ -9,7 +9,6 @@ const Category = () => {
   return (
     <section className="category">
       {/* map으로 뿌려야댐 */}
-      {/* strong -> hn태그로 변경 */}
       <strong className="category-name">Category Name</strong>
       <Link to="/imurukevol/123">
         <Card />

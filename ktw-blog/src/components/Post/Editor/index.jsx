@@ -30,6 +30,7 @@ const EditorComponent = ({ className }) => {
   const { cellManager } = state;
   const { cells } = cellManager;
   const inputRef = useRef(null);
+  const cellLength = state.cellManager.cells.length;
 
   useEffect(() => {
     const shareDocumentContent = localStorage.getItem("share-document-content");
@@ -45,11 +46,11 @@ const EditorComponent = ({ className }) => {
   }, [cellDispatch, cellManager]);
 
   useEffect(() => {
-    if (state.cellManager.cells.length === 0) {
+    if (cellLength === 0) {
       cellDispatch(cellActionCreator.focusAttachRef(inputRef));
       cellDispatch(cellActionCreator.init());
     }
-  }, [cellDispatch, state.cellManager.cells.length]);
+  }, [cellDispatch, cellLength]);
 
   return (
     <div className={className}>
