@@ -4,20 +4,19 @@ import './Category.scss'
 
 import Card from './Card'
 
-const Category = () => {
+const Category = ({ category }) => {
+  const postList = ['1', '2', '3', '4', '5', '6'];
 
   return (
     <section className="category">
-      {/* map으로 뿌려야댐 */}
-      <strong className="category-name">Category Name</strong>
-      <Link to="/imurukevol/123">
-        <Card />
-      </Link>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <strong className="category-name">{category}</strong>
+      {postList.map(id => (
+        <Link key={"card-"+id} to={`/imurukevol/${id}`}>
+          <Card
+            postId={id}
+          />
+        </Link>
+      ))}
     </section>
   )
 }

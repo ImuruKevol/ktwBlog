@@ -1,7 +1,8 @@
 import React from 'react'
 import './Card.scss'
 
-const Card = () => {
+const Card = ({ postId }) => {
+  console.log(postId);
 
   return (
     <div className="card">

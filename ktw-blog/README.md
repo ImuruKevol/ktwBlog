@@ -32,6 +32,10 @@ GraphQL을 써볼까...
 - 글, 태그 검색 인풋 추가
   - 모든 태그 모아놓은 영역 추가하기
 
+- 소켓 서버 열어두고 실시간 글 업데이트 알림 기능도 있으면 좋을 듯
+
+- styled component와 scss의 역할을 구분하고 styled component 위치 정리하기
+
 
 ## Available Scripts
 

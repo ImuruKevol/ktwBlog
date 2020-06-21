@@ -21,15 +21,13 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 ReactDOM.render(
-  // <React.StrictMode>
-    <BrowserRouter>
-      <GlobalStyle />
-      <SimpleModal />
-      <Header />
-      <Home />
-      <Footer />
-    </BrowserRouter>,
-  // </React.StrictMode>,
+  <BrowserRouter>
+    <GlobalStyle />
+    <SimpleModal />
+    <Header />
+    <Home />
+    <Footer />
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

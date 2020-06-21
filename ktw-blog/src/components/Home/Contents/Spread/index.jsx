@@ -4,12 +4,16 @@ import './Spread.scss'
 import Category from './Category'
 
 const Spread = () => {
+  const categoryList = ['react', 'vanilaJS'];
 
   return (
     <div className="spread">
-      {/* map으로 뿌려야댐 */}
-      <Category />
-      <Category />
+      {categoryList.map(category => (
+        <Category
+          key={"category-" + category}
+          category={category}
+        />
+      ))}
     </div>
   )
 }

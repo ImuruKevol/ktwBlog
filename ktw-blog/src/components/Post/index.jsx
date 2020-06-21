@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
 import Editor from "./Editor";
@@ -10,13 +11,15 @@ import './Post.scss';
 const BackgroundTheme = styled.div`
   height: 100%;
   background-color: ${THEME.VS_CODE.EDITOR};
+  min-width 220px;
+  max-width: 700px;
+  margin: 0 auto;
 `;
 
 const Post = ({match}) => {
   const { user, postId } = match.params;
   console.log(user, postId)
 
-  //todo scss를 styled로 바꾸고 디렉토리 정리하기
   return (
     <>
       <CellStore>
@@ -24,6 +27,8 @@ const Post = ({match}) => {
           <section className="post">
             <header>
               <strong>임시 타이틀 영역</strong>
+              {/*//todo 확인문구 추가하기 */}
+              <Link to="/">취소</Link>
             </header>
             <Editor className="post-editor" />
           </section>
