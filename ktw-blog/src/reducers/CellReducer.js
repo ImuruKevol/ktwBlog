@@ -261,7 +261,7 @@ const cellReducerHandler = {
   [CELL_ACTION.DOCUMENT.LOAD]: (state) => {
     const { cellManager } = state;
 
-    cellManager.load("");
+    // cellManager.load("");
 
     return {
       ...state,

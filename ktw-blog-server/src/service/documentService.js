@@ -10,16 +10,6 @@ const { query } = require('../db');
 
 //todo method test - result format
 
-//todo create post table
-/**
- * id - auto
- * userId
- * docId - function
- * content
- * createby - auto
- * updateby - auto
- */
-
 module.exports = {
   async new(userId, content) {
     const qs = `insert into post (userId, content) values(?, ?)`;

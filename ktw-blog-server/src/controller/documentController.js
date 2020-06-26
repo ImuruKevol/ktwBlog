@@ -29,10 +29,10 @@ const docCtl = {
 
   load: async (req, res) => {
     const { userId, docId } = req.params;
-    const result = docSvc.load(userId, docId);
+    const content = await docSvc.load(userId, docId);
 
-    if(result) {
-      res.status(200).send();
+    if(content) {
+      res.status(200).send(content);
     }
     else {
       res.status(500).send();

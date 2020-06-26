@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 const { docCtl } = require('../controller');
+const { asyncWrap } = require('../utils');
 
 router
   .route('/:userId/:docId')
-  .post(docCtl.new)
-  .get(docCtl.load)
-  .patch(docCtl.save)
-  .delete(docCtl.delete)
+  .post(asyncWrap(docCtl.new))
+  .get(asyncWrap(docCtl.load))
+  .patch(asyncWrap(docCtl.save))
+  .delete(asyncWrap(docCtl.delete))
 
 module.exports = router;
