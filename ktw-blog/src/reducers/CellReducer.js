@@ -246,6 +246,27 @@ const cellReducerHandler = {
       ...result,
     };
   },
+
+  [CELL_ACTION.DOCUMENT.SAVE]: (state) => {
+    const { cellManager } = state;
+
+    const docJSON = cellManager.createMarkdownDocument();
+    
+
+    return {
+      ...state
+    }
+  },
+
+  [CELL_ACTION.DOCUMENT.LOAD]: (state) => {
+    const { cellManager } = state;
+
+    cellManager.load("");
+
+    return {
+      ...state,
+    }
+  }
 };
 
 const cellReducer = (state, action) => {

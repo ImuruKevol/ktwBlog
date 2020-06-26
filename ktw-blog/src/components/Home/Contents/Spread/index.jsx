@@ -5,6 +5,8 @@ import Category from './Category'
 
 const Spread = () => {
   const categoryList = ['react', 'vanilaJS'];
+  //todo
+  // category fetching
 
   return (
     <div className="spread">

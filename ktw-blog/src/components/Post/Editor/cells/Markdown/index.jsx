@@ -111,6 +111,10 @@ const MarkdownCell = ({ cellUuid }) => {
     blockRelease(dispatch);
   };
 
+  const ctrlSEvent = () => {
+    dispatch(cellActionCreator.save());
+  }
+
   const defaultKeydownHandlers = {
     [EVENT_TYPE.SHIFT_ENTER]: shiftEnterEvent,
     [EVENT_TYPE.ARROW_UP]: arrowUpEvent,
@@ -121,6 +125,7 @@ const MarkdownCell = ({ cellUuid }) => {
     [EVENT_TYPE.CTRL_X]: ctrlXEvent,
     [EVENT_TYPE.CTRL_C]: ctrlCEvent,
     [EVENT_TYPE.CTRL_V]: ctrlVEvent,
+    [EVENT_TYPE.CTRL_S]: ctrlSEvent,
   };
 
   const keydownHandlers = {

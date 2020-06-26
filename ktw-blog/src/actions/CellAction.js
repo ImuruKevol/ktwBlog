@@ -29,6 +29,10 @@ const CELL_ACTION = {
     COPY: "cell/clipboard/copy",
     PASTE: "cell/clipboard/paste",
   },
+  DOCUMENT: {
+    SAVE: "cell/document/save",
+    LOAD: "cell/document/load",
+  }
 };
 
 const cellActionCreator = {
@@ -231,6 +235,24 @@ const cellActionCreator = {
       type: CELL_ACTION.CLIPBOARD.PASTE,
     };
   },
+
+  /**
+   * 현재 문서를 저장한다.
+   */
+  save() {
+    return {
+      type: CELL_ACTION.DOCUMENT.SAVE,
+    }
+  },
+
+  /**
+   * 문서를 불러온다.
+   */
+  load() {
+    return {
+      type: CELL_ACTION.DOCUMENT.LOAD,
+    }
+  }
 };
 
 export { CELL_ACTION, cellActionCreator };

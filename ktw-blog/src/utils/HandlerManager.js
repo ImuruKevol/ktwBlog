@@ -254,6 +254,17 @@ const makeKeyHandler = {
       }
     };
   },
+
+  [EVENT_TYPE.CTRL_S]: (handler) => {
+    return (e) => {
+      const isCtrl = checkOsDependentCtrl(e);
+      const isCharS = e.key === "s";
+      if (isCtrl && isCharS) {
+        e.preventDefault();
+        handler(e);
+      }
+    };
+  },
 };
 
 const defaultHandlers = {
@@ -266,6 +277,7 @@ const defaultHandlers = {
   [EVENT_TYPE.CTRL_X]: null,
   [EVENT_TYPE.CTRL_C]: null,
   [EVENT_TYPE.CTRL_V]: null,
+  [EVENT_TYPE.CTRL_S]: null,
 };
 
 const defaultChecksumAllFalse = {
@@ -278,6 +290,7 @@ const defaultChecksumAllFalse = {
   [EVENT_TYPE.CTRL_X]: false,
   [EVENT_TYPE.CTRL_C]: false,
   [EVENT_TYPE.CTRL_V]: false,
+  [EVENT_TYPE.CTRL_S]: false,
 };
 
 const getChecksumAllFalse = () => {
@@ -294,6 +307,7 @@ const defaultChecksumAllTrue = {
   [EVENT_TYPE.CTRL_X]: true,
   [EVENT_TYPE.CTRL_C]: true,
   [EVENT_TYPE.CTRL_V]: true,
+  [EVENT_TYPE.CTRL_S]: true,
 };
 
 const attachDefaultHandlers = (handlers) => {
