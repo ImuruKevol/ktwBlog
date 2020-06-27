@@ -19,6 +19,20 @@
   
   @include clear;
 
+  // menu item style
+  li {
+    a {
+      display: block;
+      padding: 5px 10px;
+    }
+    color: black;
+  }
+
+  li + li {
+    border-top: 1px double lightsteelblue;
+  }
+
+  // menu open & close
   &.on,
   &_toggle_btn.on {
     transform: translateX(200px);

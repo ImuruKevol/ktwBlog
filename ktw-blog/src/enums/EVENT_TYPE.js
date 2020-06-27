@@ -17,7 +17,7 @@ const EVENT_TYPE = {
   CTRL_C: "ctrl_c",
   CTRL_V: "ctrl_v",
   CTRL_S: "ctrl_s",
-  CTRL_O: "ctrl_o",
+  // CTRL_O: "ctrl_o",
 };
 
 export default EVENT_TYPE;
