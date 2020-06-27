@@ -61,7 +61,7 @@ const EditorComponent = ({ className }) => {
   }
 
   return (
-    <div className={className} onClick={() => {
+    <div className={className} onClick={(e) => {
       focusLastCell();
     }}>
       {cells.map((cell, cellIndex) => {

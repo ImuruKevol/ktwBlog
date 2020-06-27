@@ -190,7 +190,8 @@ const MarkdownCell = ({ cellUuid }) => {
     transformCell(cellUuid, dispatch, textContent, currentTag);
   };
 
-  const onClick = () => {
+  const onClick = (e) => {
+    e.stopPropagation();
     dispatch(cellActionCreator.focusMove(cellUuid));
     blockRelease(dispatch);
   };
