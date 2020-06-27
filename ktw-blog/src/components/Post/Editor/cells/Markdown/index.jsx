@@ -115,7 +115,7 @@ const MarkdownCell = ({ cellUuid }) => {
     dispatch(cellActionCreator.save());
   }
 
-  const ctrlOEvent = () => {
+  const ctrlOEvent = (e) => {
     const url = 'http://localhost:3000/document/imurukevol/1';
     // dispatch(cellActionCreator.load());
     //todo load 테스트 코드. 이걸 따로 가공해서 빼고 다른 document crud도 완성하기

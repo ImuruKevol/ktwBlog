@@ -20,8 +20,6 @@ GraphQL을 써볼까...
 
 - 스프레드에서 뿌리는 레이아웃을 리니어나 카드 뭐 이런걸로 선택 가능하게 하면 좋을듯?
 
-- 섹셔닝 태그에 hn 태그 정리하기
-
 - 레이아웃(Header, Footer, etc...) 비율 -> fix size(& 반응형 추가)
 
 - 코드 스플리팅
@@ -35,6 +33,8 @@ GraphQL을 써볼까...
 - 소켓 서버 열어두고 실시간 글 업데이트 알림 기능도 있으면 좋을 듯
 
 - styled component와 scss의 역할을 구분하고 styled component 위치 정리하기
+
+- db repl 서버도 두면 갠춘할듯
 
 
 ## Available Scripts

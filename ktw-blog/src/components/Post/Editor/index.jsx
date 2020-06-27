@@ -11,6 +11,7 @@ import {
   QuoteCell,
   CodeCell,
 } from "./cells";
+import { blockRelease } from "./cells/Markdown/handler";
 
 setGenerator("p", (uuid) => <MarkdownCell cellUuid={uuid} />);
 setGenerator("code", (uuid) => <CodeCell cellUuid={uuid} />);
@@ -52,8 +53,17 @@ const EditorComponent = ({ className }) => {
     }
   }, [cellDispatch, cellLength]);
 
+  const focusLastCell = () => {
+    const uuidArray = uuidManager.getUuidArray();
+    const lastCellUuid = uuidArray[uuidArray.length - 1];
+    cellDispatch(cellActionCreator.focusMove(lastCellUuid));
+    blockRelease(cellDispatch);
+  }
+
   return (
-    <div className={className}>
+    <div className={className} onClick={() => {
+      focusLastCell();
+    }}>
       {cells.map((cell, cellIndex) => {
         const uuidArray = uuidManager.getUuidArray();
         const key = uuidArray[cellIndex];
