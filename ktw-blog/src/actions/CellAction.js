@@ -4,6 +4,7 @@ const CELL_ACTION = {
   NEW_LIST: "cell/new/list",
   NEW_EMPTY: "cell/new/empty",
   INPUT: "cell/input",
+  INPUT_TITLE: "cell/input/title",
   DELETE: "cell/delete",
   TARGET: {
     TRANSFORM: "cell/target/transform",
@@ -38,10 +39,12 @@ const CELL_ACTION = {
 const cellActionCreator = {
   /**
    * 맨 처음 페이지를 열었을 때 스토어의 상태를 초기화시킨다.
+   * @param {Text} docId 현재 연 포스트의 docId
    */
-  init() {
+  init(docId) {
     return {
       type: CELL_ACTION.INIT,
+      docId,
     };
   },
 
@@ -77,6 +80,16 @@ const cellActionCreator = {
       cellUuid,
       text,
     };
+  },
+
+  /**
+   * @param {Text} text 타이틀 텍스트
+   */
+  inputTitle(text) {
+    return {
+      type: CELL_ACTION.INPUT_TITLE,
+      text,
+    }
   },
 
   /**

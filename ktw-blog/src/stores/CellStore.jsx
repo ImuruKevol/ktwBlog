@@ -8,8 +8,10 @@ const CellDispatchContext = React.createContext();
 
 const CellStore = ({ children }) => {
   const [state, dispatch] = useReducer(cellReducer, {
+    postId: "new",
     currentIndex: 0,
     inputRef: null,
+    title: "",
     cellManager: new CellManager(),
     isLoading: false,
     clipboard: {

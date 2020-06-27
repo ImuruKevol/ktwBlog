@@ -13,7 +13,7 @@ import {
   blockRelease,
 } from "../Markdown/handler";
 import { newCell, transformCell } from "./handler";
-
+// todo 현재 리스트 스타일 적용 안되는 버그 있음 -> style 충돌로 먹혀있음
 const ListCell = ({ cellUuid }) => {
   const { state } = useContext(CellContext);
   const dispatch = useContext(CellDispatchContext);

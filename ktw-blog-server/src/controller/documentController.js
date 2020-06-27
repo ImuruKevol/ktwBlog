@@ -16,8 +16,8 @@ const docCtl = {
 
   save: async (req, res) => {
     const { userId, docId } = req.params;
-    const { content } = req.body;
-    const result = docSvc.save(userId, docId, content);
+    const { title, content } = req.body;
+    const result = docSvc.save(userId, docId, title, content);
 
     if(result) {
       res.status(200).send();

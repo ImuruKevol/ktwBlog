@@ -7,11 +7,14 @@ import {
   target,
   clipboard,
 } from "./CellReducerHandler";
+import { request } from "../utils";
+import { API } from "../enums";
 
 const debug = createDebug("boost:reducer:cell");
 
 const cellReducerHandler = {
-  [CELL_ACTION.INIT]: (state) => {
+  [CELL_ACTION.INIT]: (state, action) => {
+    const { docId } = action;
     common.initCell(state.cellManager);
 
     debug("Init cell next state", state.cellManager);
@@ -19,6 +22,7 @@ const cellReducerHandler = {
     return {
       ...state,
       cellManager: state.cellManager,
+      docId,
     };
   },
 
@@ -71,6 +75,15 @@ const cellReducerHandler = {
       ...state,
       ...result,
     };
+  },
+
+  [CELL_ACTION.INPUT_TITLE]: (state, action) => {
+    const { text } = action;
+
+    return {
+      ...state,
+      title: text,
+    }
   },
 
   [CELL_ACTION.DELETE]: (state, action) => {
@@ -248,10 +261,23 @@ const cellReducerHandler = {
   },
 
   [CELL_ACTION.DOCUMENT.SAVE]: (state) => {
-    const { cellManager } = state;
+    const { cellManager, title } = state;
 
-    const docJSON = cellManager.createMarkdownDocument();
-    
+    const content = cellManager.createMarkdownDocument();
+    //todo userId는 session으로 바꾸기
+    const userId = "imurukevol";
+    const docId = "1";
+    const [url, method] = API.DOCUMENT.SAVE(userId, docId);
+    request({
+      url,
+      method,
+      data: {
+        title,
+        content,
+      }
+    }).then(res => {
+      console.log(res);
+    })
 
     return {
       ...state
@@ -259,7 +285,7 @@ const cellReducerHandler = {
   },
 
   [CELL_ACTION.DOCUMENT.LOAD]: (state) => {
-    const { cellManager } = state;
+    // const { cellManager } = state;
 
     // cellManager.load("");
 

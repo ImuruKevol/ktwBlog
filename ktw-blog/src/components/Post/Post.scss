@@ -14,12 +14,25 @@
     height: $header-height;
     padding-right: 15px;
     
-    strong {
+    input {
+      background-color: inherit;
+      height: $header-height;
       line-height: $header-height;
+      font-size: 24px;
+      width: calc(100% - 100px);
+    }
+
+    input:focus {
+      box-sizing: border-box;
+      outline: none;
+      border: 1.5px solid rgba($color: #000000, $alpha: 0.2);
     }
     
     a {
       float: right;
+      width: 60px;
+      padding: 0 10px;
+      text-align: center;
       line-height: $header-height;
       font-size: 18px;
     }

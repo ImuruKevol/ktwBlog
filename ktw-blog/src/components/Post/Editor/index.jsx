@@ -25,7 +25,7 @@ setGenerator("ul", (uuid) => <ListCell cellUuid={uuid} />);
 setGenerator("ol", (uuid) => <ListCell cellUuid={uuid} />);
 setGenerator("blockquote", (uuid) => <QuoteCell cellUuid={uuid} />);
 
-const EditorComponent = ({ className }) => {
+const EditorComponent = ({ postId }) => {
   const { state } = useContext(CellContext);
   const cellDispatch = useContext(CellDispatchContext);
   const { cellManager } = state;
@@ -49,9 +49,10 @@ const EditorComponent = ({ className }) => {
   useEffect(() => {
     if (cellLength === 0) {
       cellDispatch(cellActionCreator.focusAttachRef(inputRef));
-      cellDispatch(cellActionCreator.init());
+      // todo 글에서 새 글 쓰기 눌렀을 때 postId 안바뀌는 버그 있음
+      cellDispatch(cellActionCreator.init(postId));
     }
-  }, [cellDispatch, cellLength]);
+  }, [cellDispatch, cellLength, postId]);
 
   const focusLastCell = () => {
     const uuidArray = uuidManager.getUuidArray();
@@ -61,7 +62,7 @@ const EditorComponent = ({ className }) => {
   }
 
   return (
-    <div className={className} onClick={(e) => {
+    <div className="post-editor" onClick={(e) => {
       focusLastCell();
     }}>
       {cells.map((cell, cellIndex) => {

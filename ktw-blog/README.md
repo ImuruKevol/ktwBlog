@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Start
+
+- create .env.development * .env.production
+```
+REACT_APP_SERVER_URL="YOUR_SERVER_URL"
+```
+
+
+
 ## 메모장
 
 Spread: 사이트 접속시 보여지는 컨텐츠(글들 쫙 그냥 뿌려줌)
@@ -11,12 +20,14 @@ GraphQL을 써볼까...
 - home page의 category 순서 변경 가능하게
   - 네이버 뉴스 페이지에서 순서 변경하는거처럼
 
+- docId, postId 단어 혼용되어있는거 통일시키자
+
 - flux로 되어있는 마크다운 에디터를 redux로 바꾸기
 
 - isShared 걷어내기
   - 이거 편집 금지 옵션으로 쓰고 있었으니 그냥 글 편집모드 플래그로 쓰면 될 듯? 재활용 개이득
 
-- mysql 말고 postgresql 쓰기
+- mysql -> postgresql 변경하기
 
 - 스프레드에서 뿌리는 레이아웃을 리니어나 카드 뭐 이런걸로 선택 가능하게 하면 좋을듯?
 

@@ -11,23 +11,23 @@ const { query } = require('../db');
 //todo method test - result format
 
 module.exports = {
-  async new(userId, content) {
-    const qs = `insert into post (userId, content) values(?, ?)`;
-    const result = await query(qs, [userId, content]);
+  async new(userId, title, content) {
+    const qs = `insert into post (userId, title, content) values(?, ?, ?)`;
+    const result = await query(qs, [userId, title, content]);
     return result;
   },
 
-  async save(userId, docId, content) {
-    const qs = `update post set content = ? where userId = ? and docId = ?`;
-    const result = await query(qs, [content, userId, docId]);
+  async save(userId, docId, title, content) {
+    const qs = `update post set title = ?, content = ? where userId = ? and docId = ?`;
+    const result = await query(qs, [title, content, userId, docId]);
     return result;
   },
 
   async load(userId, docId) {
-    const qs = `select content from post where userId = ? and docId = ?`;
+    const qs = `select title, content from post where userId = ? and docId = ?`;
     const result = await query(qs, [userId, docId]);
-    const { content } = result[0];
-    return content;
+    const { title, content } = result[0];
+    return {title, content};
   },
 
   async delete(userId, docId) {
