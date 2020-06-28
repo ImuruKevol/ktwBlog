@@ -8,29 +8,27 @@ const { query } = require('../db');
  * D : delete
  */
 
-//todo method test - result format
-
 module.exports = {
-  async new(userId, title, content) {
-    const qs = `insert into post (userId, title, content) values(?, ?, ?)`;
-    const result = await query(qs, [userId, title, content]);
+  async new(userId, category, title, content) {
+    const qs = `insert into post (userId, category, title, content) values(?, ?, ?, ?)`;
+    const result = await query(qs, [userId, category, title, content]);
     return result;
   },
 
-  async save(userId, docId, title, content) {
-    const qs = `update post set title = ?, content = ? where userId = ? and docId = ?`;
-    const result = await query(qs, [title, content, userId, docId]);
+  async save(userId, category, docId, title, content, changedCategory = category) {
+    const qs = `update post set category = ?, title = ?, content = ? where userId = ? and category = ? and docId = ?`;
+    const result = await query(qs, [changedCategory, title, content, userId, category, docId]);
     return result;
   },
 
-  async load(userId, docId) {
+  async load(userId, category, docId) {
     const qs = `select title, content from post where userId = ? and docId = ?`;
     const result = await query(qs, [userId, docId]);
     const { title, content } = result[0];
     return {title, content};
   },
 
-  async delete(userId, docId) {
+  async delete(userId, category, docId) {
     const qs = `delete from post where userId = ? and docId = ?`;
     const result = await query(qs, [userId, docId]);
     return result;

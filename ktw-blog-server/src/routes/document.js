@@ -5,7 +5,7 @@ const { docCtl } = require('../controller');
 const { asyncWrap } = require('../utils');
 
 router
-  .route('/:userId/:docId')
+  .route('/:userId/:category/:docId')
   .post(asyncWrap(docCtl.new))
   .get(asyncWrap(docCtl.load))
   .patch(asyncWrap(docCtl.save))

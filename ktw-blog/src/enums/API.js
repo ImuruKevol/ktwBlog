@@ -1,9 +1,9 @@
 const api = {
   DOCUMENT: {
-    NEW: (userId) => [`document/${userId}/new`, 'post'],
-    SAVE: (userId, docId) => [`document/${userId}/${docId}`, 'patch'],
-    LOAD: (userId, docId) => [`document/${userId}/${docId}`, 'get'],
-    DELETE: (userId, docId) => [`document/${userId}/${docId}`, 'delete'],
+    NEW: (userId, category) => [`document/${userId}/${category}/new`, 'post'],
+    SAVE: (userId, category, docId) => [`document/${userId}/${category}/${docId}`, 'patch'],
+    LOAD: (userId, category, docId) => [`document/${userId}/${category}/${docId}`, 'get'],
+    DELETE: (userId, category, docId) => [`document/${userId}/${category}/${docId}`, 'delete'],
   }
 }
 
