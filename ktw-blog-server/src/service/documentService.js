@@ -29,8 +29,8 @@ module.exports = {
   },
 
   async delete(userId, category, docId) {
-    const qs = `delete from post where userId = ? and docId = ?`;
-    const result = await query(qs, [userId, docId]);
+    const qs = `delete from post where userId = ? and category = ? and docId = ?`;
+    const result = await query(qs, [userId, category, docId]);
     return result;
   }
 }
