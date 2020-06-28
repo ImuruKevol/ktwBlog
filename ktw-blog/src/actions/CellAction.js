@@ -41,9 +41,10 @@ const cellActionCreator = {
    * 맨 처음 페이지를 열었을 때 스토어의 상태를 초기화시킨다.
    * @param {Text} docId 현재 연 포스트의 docId
    */
-  init(docId) {
+  init(category, docId) {
     return {
       type: CELL_ACTION.INIT,
+      category,
       docId,
     };
   },

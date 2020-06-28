@@ -16,10 +16,10 @@ const Category = ({ category }) => {
     <section className="category">
       <strong className="category-name">{category}</strong>
       {postList.map(id => (
-        //todo 추후에 서비스를 할 시에는 imurukevol 자리에 사용자 id나 nickname이 들어갈 예정
-        <Link key={"card-"+id} to={`/imurukevol/${id}`}>
+        //todo 추후에 서비스를 할 시에는 imurukevol 자리에 사용자 id가 들어갈 예정
+        <Link key={"card-"+id} to={`/imurukevol/${category}/${id}`}>
           <Card
-            postId={id}
+            docId={id}
           />
         </Link>
       ))}

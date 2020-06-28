@@ -35,8 +35,8 @@ const PostHeader = () => {
 }
 
 const Post = ({match}) => {
-  const { user, postId } = match.params;
-  console.log(user, postId)
+  const { userId, category, docId } = match.params;
+  console.log(userId, category, docId)
 
   return (
     <>
@@ -44,7 +44,10 @@ const Post = ({match}) => {
         <BackgroundTheme>
           <section className="post">
             <PostHeader />
-            <Editor postId={postId} />
+            <Editor
+              category={category}
+              docId={docId}
+            />
           </section>
         </BackgroundTheme>
       </CellStore>

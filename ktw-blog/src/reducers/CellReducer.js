@@ -14,7 +14,7 @@ const debug = createDebug("boost:reducer:cell");
 
 const cellReducerHandler = {
   [CELL_ACTION.INIT]: (state, action) => {
-    const { docId } = action;
+    const { category, docId } = action;
     common.initCell(state.cellManager);
 
     debug("Init cell next state", state.cellManager);
@@ -22,6 +22,7 @@ const cellReducerHandler = {
     return {
       ...state,
       cellManager: state.cellManager,
+      category,
       docId,
     };
   },
@@ -261,20 +262,26 @@ const cellReducerHandler = {
   },
 
   [CELL_ACTION.DOCUMENT.SAVE]: (state) => {
-    const { cellManager, title } = state;
+    const { cellManager, title, category, changedCategory } = state;
 
     const content = cellManager.createMarkdownDocument();
     //todo userId는 session으로 바꾸기
     const userId = "imurukevol";
     const docId = "1";
-    const [url, method] = API.DOCUMENT.SAVE(userId, docId);
+    const [url, method] = API.DOCUMENT.SAVE(userId, category, docId);
+    let data = {
+      title,
+      content,
+    };
+
+    if(changedCategory) {
+      data = Object.assign({changedCategory}, data);
+    }
+
     request({
       url,
       method,
-      data: {
-        title,
-        content,
-      }
+      data,
     }).then(res => {
       console.log(res);
     })

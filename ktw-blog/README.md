@@ -20,8 +20,6 @@ GraphQL을 써볼까...
 - home page의 category 순서 변경 가능하게
   - 네이버 뉴스 페이지에서 순서 변경하는거처럼
 
-- docId, postId 단어 혼용되어있는거 통일시키자
-
 - flux로 되어있는 마크다운 에디터를 redux로 바꾸기
 
 - isShared 걷어내기

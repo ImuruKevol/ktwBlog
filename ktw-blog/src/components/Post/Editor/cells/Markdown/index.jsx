@@ -111,25 +111,10 @@ const MarkdownCell = ({ cellUuid }) => {
     blockRelease(dispatch);
   };
 
+  // todo 저장시 카드에 보여줄 subtitle? 추가하기
   const ctrlSEvent = () => {
     dispatch(cellActionCreator.save());
   }
-
-  // const ctrlOEvent = (e) => {
-  //   const url = 'http://localhost:3000/document/imurukevol/1';
-  //   // dispatch(cellActionCreator.load());
-  //   //todo load 테스트 코드. 이걸 따로 가공해서 빼고 다른 document crud도 완성하기
-  //   fetch(url, {
-  //     mode: 'cors',
-  //   })
-  //     .then(res => res.text())
-  //     .then(result => {
-  //       console.log(result);
-  //     })
-  //     .catch(err => {
-  //       console.error(err);
-  //     })
-  // }
 
   const defaultKeydownHandlers = {
     [EVENT_TYPE.SHIFT_ENTER]: shiftEnterEvent,
