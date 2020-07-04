@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { API } from '../../../../enums'
 import { request } from '../../../../utils'
 
@@ -7,30 +7,41 @@ import './Spread.scss'
 
 const Spread = () => {
   //todo 세션 or 쿠키에서 userId 받아오기. BE에서는 둘다 체크할거임
+  const [posts,  setPosts] = useState({});
   const userId = "imurukevol";
-  let categoryList = ['react', 'vanilaJS'];
+
+  const categorize = (list) => {
+    let tmpPosts = {};
+    list.map(item => {
+      const { category } = item;
+      if(tmpPosts[category] === undefined) {
+        tmpPosts[category] = [];
+      }
+      const post = {...item};
+      delete post.category;
+      tmpPosts[category].push(post);
+    });
+
+    setPosts(tmpPosts);
+  }
   
-  const getCategoryList = async () => {
+  useEffect(() => {
     const [url, method] = API.CATEGORY.LIST(userId);
-    const result = await request({
+    request({
       url,
       method,
+    }).then(res => {
+      categorize(res.data);
     });
-    
-    console.log(result.data);
-  }
-
-  useEffect(() => {
-    getCategoryList();
   }, []);
 
   return (
     <div className="spread">
-      {categoryList.map(category => (
+      {Object.keys(posts).map(category => (
         <Category
           key={"category-" + category}
-          userId={userId}
           category={category}
+          posts={posts[category]}
         />
       ))}
     </div>
