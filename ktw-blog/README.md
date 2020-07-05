@@ -45,6 +45,7 @@ GraphQL을 써볼까...
 
 - db repl 서버도 두면 갠춘할듯
 
+- 셀 이동시 커서 위치 저장하기?
 
 ## Available Scripts
 

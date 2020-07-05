@@ -115,6 +115,8 @@ const MarkdownCell = ({ cellUuid }) => {
   // todo 저장시 카드에 보여줄 subtitle 추가하기
   // subtitle은 내용물의 50자까지?
   // 저장 후 알림 띄우기
+  // todo 버그 고치기 : 저장 후 홈 갔다가 다시 오면 핸들러 커스텀 훅이 죽음
+  // - element.click같은걸로 변경하기? 훅에 넣지 말고
   const ctrlSEvent = () => {
     dispatch(cellActionCreator.save());
   }
@@ -130,7 +132,6 @@ const MarkdownCell = ({ cellUuid }) => {
     [EVENT_TYPE.CTRL_C]: ctrlCEvent,
     [EVENT_TYPE.CTRL_V]: ctrlVEvent,
     [EVENT_TYPE.CTRL_S]: ctrlSEvent,
-    // [EVENT_TYPE.CTRL_O]: ctrlOEvent,
   };
 
   const keydownHandlers = {
