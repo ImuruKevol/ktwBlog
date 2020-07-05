@@ -46,6 +46,7 @@ const MarkdownCell = ({ cellUuid }) => {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     text = !isLoading ? cellManager.texts[cellIndex] : "";
     transformCell(cellUuid, dispatch, text, currentTag);
   }, [isLoading]);
@@ -111,7 +112,9 @@ const MarkdownCell = ({ cellUuid }) => {
     blockRelease(dispatch);
   };
 
-  // todo 저장시 카드에 보여줄 subtitle? 추가하기
+  // todo 저장시 카드에 보여줄 subtitle 추가하기
+  // subtitle은 내용물의 50자까지?
+  // 저장 후 알림 띄우기
   const ctrlSEvent = () => {
     dispatch(cellActionCreator.save());
   }

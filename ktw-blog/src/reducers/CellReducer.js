@@ -14,8 +14,12 @@ const debug = createDebug("boost:reducer:cell");
 
 const cellReducerHandler = {
   [CELL_ACTION.INIT]: (state, action) => {
-    const { category, docId } = action;
-    common.initCell(state.cellManager);
+    const { cellManager } = state;
+    const { category, docId, title, content } = action;
+
+    common.initCell(cellManager);
+    if(content)
+      cellManager.load(JSON.parse(content));
 
     debug("Init cell next state", state.cellManager);
 
@@ -23,6 +27,7 @@ const cellReducerHandler = {
       ...state,
       cellManager: state.cellManager,
       category,
+      title,
       docId,
     };
   },
@@ -290,16 +295,6 @@ const cellReducerHandler = {
       ...state
     }
   },
-
-  [CELL_ACTION.DOCUMENT.LOAD]: (state) => {
-    // const { cellManager } = state;
-
-    // cellManager.load("");
-
-    return {
-      ...state,
-    }
-  }
 };
 
 const cellReducer = (state, action) => {

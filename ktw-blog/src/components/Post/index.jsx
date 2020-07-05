@@ -22,12 +22,16 @@ const PostHeader = () => {
   const dispatch = useContext(CellDispatchContext);
   const { title } = state;
 
+  const onChange = (e) => {
+    const { value } = e.target;
+    dispatch(cellActionCreator.inputTitle(value));
+  }
+
+  // todo 카테고리 선택 및 생성 칸 만들기
+  // todo 저장 버튼 만들기
   return (
     <header>
-      <input type="text" placeholder="제목" value={title} onChange={(e) => {
-        const { value } = e.target;
-        dispatch(cellActionCreator.inputTitle(value));
-      }}></input>
+      <input type="text" placeholder="제목" value={title} onChange={onChange}></input>
       {/*//todo 확인문구 추가하기 */}
       <Link to="/">취소</Link>
     </header>
@@ -35,8 +39,11 @@ const PostHeader = () => {
 }
 
 const Post = ({match}) => {
-  const { userId, category, docId } = match.params;
-  console.log(userId, category, docId)
+  let { userId, category, docId } = match.params;
+  if(match.path === "/:userId/new") {
+    category = "new";
+    docId = "new";
+  }
 
   return (
     <>
@@ -45,6 +52,7 @@ const Post = ({match}) => {
           <section className="post">
             <PostHeader />
             <Editor
+              userId={userId}
               category={category}
               docId={docId}
             />

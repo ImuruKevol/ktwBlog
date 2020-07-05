@@ -32,20 +32,23 @@ const CELL_ACTION = {
   },
   DOCUMENT: {
     SAVE: "cell/document/save",
-    LOAD: "cell/document/load",
   }
 };
 
 const cellActionCreator = {
   /**
    * 맨 처음 페이지를 열었을 때 스토어의 상태를 초기화시킨다.
-   * @param {Text} docId 현재 연 포스트의 docId
+   * @param {Text} category 현재 포스트의 카테고리
+   * @param {Text} title 현재 포스트의 타이틀
+   * @param {Number} docId 현재 포스트의 docId
    */
-  init(category, docId) {
+  init(category = "", title = "", content = null, docId = null) {
     return {
       type: CELL_ACTION.INIT,
       category,
       docId,
+      title,
+      content, 
     };
   },
 
@@ -258,15 +261,6 @@ const cellActionCreator = {
       type: CELL_ACTION.DOCUMENT.SAVE,
     }
   },
-
-  /**
-   * 문서를 불러온다.
-   */
-  load() {
-    return {
-      type: CELL_ACTION.DOCUMENT.LOAD,
-    }
-  }
 };
 
 export { CELL_ACTION, cellActionCreator };

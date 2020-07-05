@@ -1,13 +1,17 @@
-import React from 'react'
-import './Card.scss'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Card.scss';
 
-const Card = ({ docId, title, subtitle }) => {
+const Card = ({ category, docId, title, subtitle }) => {
   return (
-    <div className="card">
+    <Link
+      to={`/imurukevol/${category}/${docId}`}
+      className="card"
+    >
       {/* //todo 썸네일 추가? */}
       <strong>{title}</strong>
       <p>{subtitle}</p>
-    </div>
+    </Link>
   )
 }
 

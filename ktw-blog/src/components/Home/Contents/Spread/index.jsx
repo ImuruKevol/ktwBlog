@@ -20,6 +20,7 @@ const Spread = () => {
       const post = {...item};
       delete post.category;
       tmpPosts[category].push(post);
+      return null;
     });
 
     setPosts(tmpPosts);

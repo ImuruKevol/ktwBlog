@@ -18,6 +18,7 @@ const Contents = () => {
     <ContentsWrapper>
       <Switch>
         <Route exact path="/" component={Spread} />
+        <Route exact path="/:userId/new" component={Post} />
         <Route exact path="/:userId/:category/:docId" component={Post} />
       </Switch>
     </ContentsWrapper>

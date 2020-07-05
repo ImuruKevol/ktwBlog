@@ -10,6 +10,7 @@ const { query } = require('../db');
 
 module.exports = {
   async new(userId, category, title, content) {
+    //todo docId 계산하는 쿼리 추가
     const qs = `insert into post (userId, category, title, content) values(?, ?, ?, ?)`;
     const result = await query(qs, [userId, category, title, content]);
     return result;
@@ -22,10 +23,9 @@ module.exports = {
   },
 
   async load(userId, category, docId) {
-    const qs = `select title, content from post where userId = ? and docId = ?`;
-    const result = await query(qs, [userId, docId]);
-    const { title, content } = result[0];
-    return {title, content};
+    const qs = `select title, content from post where userId = ? and category = ? and docId = ?`;
+    const result = await query(qs, [userId, category, docId]);
+    return result[0];
   },
 
   async delete(userId, category, docId) {

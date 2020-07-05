@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import { CellContext, CellDispatchContext } from "../../../stores/CellStore";
 import { cellActionCreator } from "../../../actions/CellAction";
 import { setGenerator } from "./cells/CellGenerator";
-import { uuidManager } from "../../../utils";
+import { uuidManager, request } from "../../../utils";
 import {
   MarkdownCell,
   HeadingCell,
@@ -12,6 +12,7 @@ import {
   CodeCell,
 } from "./cells";
 import { blockRelease } from "./cells/Markdown/handler";
+import { API } from "../../../enums";
 
 setGenerator("p", (uuid) => <MarkdownCell cellUuid={uuid} />);
 setGenerator("code", (uuid) => <CodeCell cellUuid={uuid} />);
@@ -25,7 +26,7 @@ setGenerator("ul", (uuid) => <ListCell cellUuid={uuid} />);
 setGenerator("ol", (uuid) => <ListCell cellUuid={uuid} />);
 setGenerator("blockquote", (uuid) => <QuoteCell cellUuid={uuid} />);
 
-const EditorComponent = ({ category, docId }) => {
+const EditorComponent = ({ userId, category, docId }) => {
   const { state } = useContext(CellContext);
   const cellDispatch = useContext(CellDispatchContext);
   const { cellManager } = state;
@@ -33,26 +34,18 @@ const EditorComponent = ({ category, docId }) => {
   const inputRef = useRef(null);
   const cellLength = state.cellManager.cells.length;
 
-  useEffect(() => {
-    const shareDocumentContent = localStorage.getItem("share-document-content");
-    const isShared = localStorage.getItem("isShared");
-    if (shareDocumentContent && isShared) {
-      cellDispatch(cellActionCreator.shareLoad());
-      const document = JSON.parse(shareDocumentContent);
-      cellManager.load(document);
-      cellDispatch(cellActionCreator.shareLoadFinish());
-      localStorage.removeItem("share-document-content");
-      localStorage.removeItem("isShared");
-    }
-  }, [cellDispatch, cellManager]);
-
-  useEffect(() => {
-    if (cellLength === 0) {
-      cellDispatch(cellActionCreator.focusAttachRef(inputRef));
-      // todo 글에서 새 글 쓰기 눌렀을 때 docId 안바뀌는 버그 있음
-      cellDispatch(cellActionCreator.init(category, docId));
-    }
-  }, [category, cellDispatch, cellLength, docId]);
+  // useEffect(() => {
+  //   const shareDocumentContent = localStorage.getItem("share-document-content");
+  //   const isShared = localStorage.getItem("isShared");
+  //   if (shareDocumentContent && isShared) {
+  //     cellDispatch(cellActionCreator.shareLoad());
+  //     const document = JSON.parse(shareDocumentContent);
+  //     cellManager.load(document);
+  //     cellDispatch(cellActionCreator.shareLoadFinish());
+  //     localStorage.removeItem("share-document-content");
+  //     localStorage.removeItem("isShared");
+  //   }
+  // }, [cellDispatch, cellManager]);
 
   const focusLastCell = () => {
     const uuidArray = uuidManager.getUuidArray();
@@ -61,6 +54,28 @@ const EditorComponent = ({ category, docId }) => {
     blockRelease(cellDispatch);
   }
 
+  useEffect(() => {
+    if (cellLength === 0) {
+      cellDispatch(cellActionCreator.focusAttachRef(inputRef));
+      if(category !== "new" && docId !== "new") {
+        const [url, method] = API.DOCUMENT.LOAD(userId, category, docId);
+        request({
+          url,
+          method,
+        }).then(res => {
+          const {title, content} = res.data;
+          cellDispatch(cellActionCreator.init(category, title, content, docId));
+          focusLastCell();
+        });
+      }
+      else {
+        cellDispatch(cellActionCreator.init());
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category, cellDispatch, cellLength, cellManager, docId, userId]);
+
+// todo 포스트 열었을 때 로딩 돌아가는거 추가하기
   return (
     <div className="post-editor" onClick={(e) => {
       focusLastCell();

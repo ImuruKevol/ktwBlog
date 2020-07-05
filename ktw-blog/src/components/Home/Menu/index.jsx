@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
 import { useKey } from "../../../utils/HandlerManager";
 import { EVENT_TYPE } from "../../../enums";
 import './Menu.scss'
@@ -19,11 +18,12 @@ const Menu = () => {
         menu? "main_menu on" : "main_menu close"
       }>
         <li>
-          <Link to="/imurukevol/new" onClick={() => {
+          {/* //todo userId 세션에서 가져오기 */}
+          <a href="/imurukevol/new" onClick={() => {
             onClickMenu();
           }}>
             새 글 쓰기
-          </Link>
+          </a>
         </li>
       </ul>
       <button
