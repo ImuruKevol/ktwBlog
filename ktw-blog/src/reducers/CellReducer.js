@@ -288,6 +288,7 @@ const cellReducerHandler = {
       data,
     }).then(res => {
       console.log(res);
+      //todo res.status로 성공/실패 동작 추가하기
     })
 
     return {

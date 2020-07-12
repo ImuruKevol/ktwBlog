@@ -10,15 +10,31 @@ const { query } = require('../db');
 
 module.exports = {
   async new(userId, category, title, content) {
-    //todo docId 계산하는 쿼리 추가
-    const qs = `insert into post (userId, category, title, content) values(?, ?, ?, ?)`;
-    const result = await query(qs, [userId, category, title, content]);
+    const parsedContent = JSON.parse(content);
+    const subtitle = parsedContent.length >= 2 ?
+                    `${parsedContent[0].text} ${parsedContent[1].text}`
+                    :
+                    `${parsedContent[0].text}`;
+    const qs = `insert into post (userId, category, docId, title, subtitle, content)
+                  values(
+                    ?,
+                    ?, 
+                    (select maxDocId from (select ifnull(max(docId) + 1, 1) maxDocId from post where userId = ? and category = ?) tmp), 
+                    ?, 
+                    ?, 
+                    ?)`;
+    const result = await query(qs, [userId, category, userId, category, title, subtitle, content]);
     return result;
   },
 
   async save(userId, category, docId, title, content, changedCategory = category) {
-    const qs = `update post set category = ?, title = ?, content = ? where userId = ? and category = ? and docId = ?`;
-    const result = await query(qs, [changedCategory, title, content, userId, category, docId]);
+    const parsedContent = JSON.parse(content);
+    const subtitle = parsedContent.length >= 2 ?
+                    `${parsedContent[0].text} ${parsedContent[1].text}`
+                    :
+                    `${parsedContent[0].text}`;
+    const qs = `update post set category = ?, title = ?, subtitle = ?, content = ? where userId = ? and category = ? and docId = ?`;
+    const result = await query(qs, [changedCategory, title, subtitle, content, userId, category, docId]);
     return result;
   },
 
