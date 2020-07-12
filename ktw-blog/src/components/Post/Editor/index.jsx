@@ -30,8 +30,8 @@ setGenerator("blockquote", (uuid) => <QuoteCell cellUuid={uuid} />);
 
 const EditorComponent = ({ userId, category, docId }) => {
   const { state } = useContext(CellContext);
-  const cellDispatch = useContext(CellDispatchContext);
-  const { cellManager } = state;
+  const dispatch = useContext(CellDispatchContext);
+  const { cellManager, isLoading } = state;
   const { cells } = cellManager;
   const inputRef = useRef(null);
   const cellLength = state.cellManager.cells.length;
@@ -52,13 +52,13 @@ const EditorComponent = ({ userId, category, docId }) => {
   const focusLastCell = () => {
     const uuidArray = uuidManager.getUuidArray();
     const lastCellUuid = uuidArray[uuidArray.length - 1];
-    cellDispatch(cellActionCreator.focusMove(lastCellUuid));
-    blockRelease(cellDispatch);
+    dispatch(cellActionCreator.focusMove(lastCellUuid));
+    blockRelease(dispatch);
   }
 
   useEffect(() => {
     if (cellLength === 0) {
-      cellDispatch(cellActionCreator.focusAttachRef(inputRef));
+      dispatch(cellActionCreator.focusAttachRef(inputRef));
       if(category !== "new" && docId !== "new") {
         const [url, method] = API.DOCUMENT.LOAD(userId, category, docId);
         request({
@@ -66,22 +66,24 @@ const EditorComponent = ({ userId, category, docId }) => {
           method,
         }).then(res => {
           const {title, content} = res.data;
-          cellDispatch(cellActionCreator.init(category, title, content, docId));
+          dispatch(cellActionCreator.init(category, title, content, docId));
+          dispatch(cellActionCreator.load());
           focusLastCell();
         });
       }
       else {
-        cellDispatch(cellActionCreator.init());
+        dispatch(cellActionCreator.init());
+        dispatch(cellActionCreator.load());
       }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [category, cellDispatch, cellLength, cellManager, docId, userId]);
+  }, [category, dispatch, cellLength, cellManager, docId, userId]);
 
   // todo 저장시 카드에 보여줄 subtitle 추가하기
   // subtitle은 내용물의 50자까지?
   // 저장 후 알림 띄우기
   const documentSave = () => {
-    cellDispatch(cellActionCreator.save());
+    dispatch(cellActionCreator.save());
   }
 
   useKey(EVENT_TYPE.CTRL_S, documentSave);
@@ -91,11 +93,15 @@ const EditorComponent = ({ userId, category, docId }) => {
     <div className="post-editor" onClick={(e) => {
       focusLastCell();
     }}>
-      {cells.map((cell, cellIndex) => {
-        const uuidArray = uuidManager.getUuidArray();
-        const key = uuidArray[cellIndex];
-        return <React.Fragment key={key}>{cell}</React.Fragment>;
-      })}
+      {isLoading ? 
+        "Loading..."
+        :
+        cells.map((cell, cellIndex) => {
+          const uuidArray = uuidManager.getUuidArray();
+          const key = uuidArray[cellIndex];
+          return <React.Fragment key={key}>{cell}</React.Fragment>;
+        })
+      }
     </div>
   );
 };

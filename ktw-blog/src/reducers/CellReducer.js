@@ -294,6 +294,13 @@ const cellReducerHandler = {
       ...state
     }
   },
+
+  [CELL_ACTION.DOCUMENT.LOAD]: (state) => {
+    return {
+      ...state,
+      isLoading: false,
+    }
+  }
 };
 
 const cellReducer = (state, action) => {

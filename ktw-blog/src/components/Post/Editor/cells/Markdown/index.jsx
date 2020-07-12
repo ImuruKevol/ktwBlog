@@ -26,7 +26,6 @@ const MarkdownCell = ({ cellUuid }) => {
     cursor,
     block,
     cellManager,
-    isLoading,
     isShared,
   } = state;
   let inputRef = null;
@@ -44,12 +43,6 @@ const MarkdownCell = ({ cellUuid }) => {
       intoShiftBlock = true;
     }
   }
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    text = !isLoading ? cellManager.texts[cellIndex] : "";
-    transformCell(cellUuid, dispatch, text, currentTag);
-  }, [isLoading]);
 
   // -------------- Handler -----------------------
   const enterEvent = (e) => {

@@ -32,6 +32,7 @@ const CELL_ACTION = {
   },
   DOCUMENT: {
     SAVE: "cell/document/save",
+    LOAD: "cell/document/laod",
   }
 };
 
@@ -261,6 +262,15 @@ const cellActionCreator = {
       type: CELL_ACTION.DOCUMENT.SAVE,
     }
   },
+
+  /**
+   * 로딩이 완료된다.
+   */
+  load() {
+    return {
+      type: CELL_ACTION.DOCUMENT.LOAD,
+    }
+  }
 };
 
 export { CELL_ACTION, cellActionCreator };

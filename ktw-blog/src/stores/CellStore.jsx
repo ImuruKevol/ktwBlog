@@ -15,7 +15,7 @@ const CellStore = ({ children }) => {
     changedCategory: null,
     title: "",
     cellManager: new CellManager(),
-    isLoading: false,
+    isLoading: true,
     clipboard: {
       texts: [],
       tags: [],
