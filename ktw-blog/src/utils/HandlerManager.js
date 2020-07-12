@@ -266,16 +266,6 @@ const makeKeyHandler = {
     };
   },
 
-  // [EVENT_TYPE.CTRL_O]: (handler) => {
-  //   return (e) => {
-  //     const isCtrl = checkOsDependentCtrl(e);
-  //     const isCharO = e.key === "o";
-  //     if (isCtrl && isCharO) {
-  //       e.preventDefault();
-  //       handler(e);
-  //     }
-  //   };
-  // },
 };
 
 const defaultHandlers = {
@@ -288,8 +278,6 @@ const defaultHandlers = {
   [EVENT_TYPE.CTRL_X]: null,
   [EVENT_TYPE.CTRL_C]: null,
   [EVENT_TYPE.CTRL_V]: null,
-  [EVENT_TYPE.CTRL_S]: null,
-  // [EVENT_TYPE.CTRL_O]: null,
 };
 
 const defaultChecksumAllFalse = {
@@ -302,7 +290,6 @@ const defaultChecksumAllFalse = {
   [EVENT_TYPE.CTRL_X]: false,
   [EVENT_TYPE.CTRL_C]: false,
   [EVENT_TYPE.CTRL_V]: false,
-  // [EVENT_TYPE.CTRL_O]: false,
 };
 
 const getChecksumAllFalse = () => {
@@ -319,8 +306,6 @@ const defaultChecksumAllTrue = {
   [EVENT_TYPE.CTRL_X]: true,
   [EVENT_TYPE.CTRL_C]: true,
   [EVENT_TYPE.CTRL_V]: true,
-  [EVENT_TYPE.CTRL_S]: true,
-  // [EVENT_TYPE.CTRL_O]: true,
 };
 
 const attachDefaultHandlers = (handlers) => {
@@ -330,7 +315,7 @@ const attachDefaultHandlers = (handlers) => {
   });
 };
 
-const useKey = (keyEvent, handler, isFocus, deps = []) => {
+const useKey = (keyEvent, handler, isFocus = true, deps = []) => {
   const keydownHandler = makeKeyHandler[keyEvent](handler);
   useEffect(() => {
     if (isFocus) {

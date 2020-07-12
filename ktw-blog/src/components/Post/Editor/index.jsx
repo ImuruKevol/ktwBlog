@@ -12,6 +12,8 @@ import {
   CodeCell,
 } from "./cells";
 import { blockRelease } from "./cells/Markdown/handler";
+import { useKey } from "../../../utils/HandlerManager";
+import { EVENT_TYPE } from "../../../enums";
 import { API } from "../../../enums";
 
 setGenerator("p", (uuid) => <MarkdownCell cellUuid={uuid} />);
@@ -74,6 +76,15 @@ const EditorComponent = ({ userId, category, docId }) => {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category, cellDispatch, cellLength, cellManager, docId, userId]);
+
+  // todo 저장시 카드에 보여줄 subtitle 추가하기
+  // subtitle은 내용물의 50자까지?
+  // 저장 후 알림 띄우기
+  const documentSave = () => {
+    cellDispatch(cellActionCreator.save());
+  }
+
+  useKey(EVENT_TYPE.CTRL_S, documentSave);
 
 // todo 포스트 열었을 때 로딩 돌아가는거 추가하기
   return (
