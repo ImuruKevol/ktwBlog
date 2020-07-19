@@ -276,7 +276,14 @@ const cellReducerHandler = {
     const content = cellManager.createMarkdownDocument();
     //todo userId는 session으로 바꾸기
     const userId = "imurukevol";
-    const [url, method] = API.DOCUMENT.SAVE(userId, category, docId);
+    let api = null;
+    if(docId === null) {
+      api = API.DOCUMENT.NEW;
+    }
+    else {
+      api = API.DOCUMENT.SAVE;
+    }
+    const [url, method] = api(userId, category, docId);
     let data = {
       title,
       content,
@@ -297,7 +304,8 @@ const cellReducerHandler = {
     })
 
     return {
-      ...state
+      ...state,
+      changedCategory: false,
     }
   },
 

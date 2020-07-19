@@ -12,7 +12,7 @@ const CellStore = ({ children }) => {
     currentIndex: 0,
     inputRef: null,
     category: "new",
-    changedCategory: null,
+    changedCategory: false,
     title: "",
     cellManager: new CellManager(),
     isLoading: true,
