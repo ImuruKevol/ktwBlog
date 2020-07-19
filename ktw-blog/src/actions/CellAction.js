@@ -46,7 +46,7 @@ const cellActionCreator = {
    * @param {Text} title 현재 포스트의 타이틀
    * @param {Number} docId 현재 포스트의 docId
    */
-  init(category = "new", title = "", content = null, docId = null) {
+  init(category = "", title = "", content = null, docId = null) {
     return {
       type: CELL_ACTION.INIT,
       category,

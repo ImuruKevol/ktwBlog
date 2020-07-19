@@ -10,7 +10,8 @@ const CommandBar = () => {
   const dispatch = useContext(CellDispatchContext);
 
   const { category } = state;
-  const [isNew, setIsNew] = useState(category === "new" ? true : false);
+  const [isNew, setIsNew] = useState(false);
+  const [crtCategory, setCrtCategory] = useState("");
   const categoryList = JSON.parse(localStorage.getItem("categoryList"));
 
   const changeCategory = (category) => {
@@ -18,9 +19,15 @@ const CommandBar = () => {
   }
 
   useEffect(() => {
-    setIsNew(category === "new" ? true : false)
-  }, [category]);
+    if(!categoryList.includes(category)) {
+      setIsNew(true);
+    }
+    else {
+      setIsNew(false);
+    }
+  }, [category, categoryList]);
 
+  //todo 한줄짜리 로그 표시 인풋을 만들어서, 저장시, 로드시 등에 상태 알려주기
   return (
     <div className="command_bar">
       {/* //todo undo */}
@@ -28,8 +35,10 @@ const CommandBar = () => {
       <select
         onChange={(e) => {
           const {value} = e.target;
+          console.log(value)
           if(value === "new") {
             setIsNew(true);
+            changeCategory("");
           }
           else {
             setIsNew(false);
@@ -51,12 +60,16 @@ const CommandBar = () => {
       {isNew &&
         <input
           type="text"
-          name=""
-          value=""
-          onChange={(e) => {
-            const { value } = e.target;
-            changeCategory(value);
+          name="newCategory"
+          value={crtCategory}
+          placeholder="new category"
+          onChange={e => {
+            setCrtCategory(e.target.value);
           }}
+          onBlur={() => {
+            changeCategory(crtCategory);
+          }}
+          autoFocus
         />
       }
       <button

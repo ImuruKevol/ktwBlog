@@ -11,7 +11,7 @@ const CellStore = ({ children }) => {
     docId: "new",
     currentIndex: 0,
     inputRef: null,
-    category: "",
+    category: "new",
     changedCategory: null,
     title: "",
     cellManager: new CellManager(),
