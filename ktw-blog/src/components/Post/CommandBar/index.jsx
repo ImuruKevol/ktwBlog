@@ -27,7 +27,7 @@ const CommandBar = () => {
     }
   }, [category, categoryList]);
 
-  //todo 한줄짜리 로그 표시 인풋을 만들어서, 저장시, 로드시 등에 상태 알려주기
+  //todo 아토믹하게 컴포넌트 나누기
   return (
     <div className="command_bar">
       {/* //todo undo */}

@@ -300,7 +300,7 @@ const cellReducerHandler = {
     }).then(res => {
       console.log(res);
       //todo res.status로 성공/실패 동작 추가하기
-      // 상태 메세지 log input msg 바꾸기
+      // notification에 알림 추가하기
     })
 
     return {

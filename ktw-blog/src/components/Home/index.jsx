@@ -3,12 +3,17 @@ import './Home.scss'
 
 import Menu from './Menu'
 import Contents from './Contents'
+import Notification from "./Notification"
 
+// todo noti store 만들기
 const Home = () => {
   return (
     <main>
-      <Menu />
-      <Contents />
+      {/* <NotificationStore> */}
+        <Menu />
+        <Contents />
+        <Notification />
+      {/* </NotificationStore> */}
     </main>
   )
 }
