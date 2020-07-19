@@ -33,6 +33,9 @@ const CELL_ACTION = {
   DOCUMENT: {
     SAVE: "cell/document/save",
     LOAD: "cell/document/laod",
+    CATEGORY: {
+      CHANGE: "cell/document/category/change",
+    },
   }
 };
 
@@ -43,7 +46,7 @@ const cellActionCreator = {
    * @param {Text} title 현재 포스트의 타이틀
    * @param {Number} docId 현재 포스트의 docId
    */
-  init(category = "", title = "", content = null, docId = null) {
+  init(category = "new", title = "", content = null, docId = null) {
     return {
       type: CELL_ACTION.INIT,
       category,
@@ -270,7 +273,18 @@ const cellActionCreator = {
     return {
       type: CELL_ACTION.DOCUMENT.LOAD,
     }
-  }
+  },
+
+  /**
+   * 카테고리를 변경한다.
+   * @param {String} category 
+   */
+  categoryChange(category) {
+    return {
+      type: CELL_ACTION.DOCUMENT.CATEGORY.CHANGE,
+      category,
+    }
+  },
 };
 
 export { CELL_ACTION, cellActionCreator };

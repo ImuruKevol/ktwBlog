@@ -24,6 +24,7 @@ const Spread = () => {
     });
 
     setPosts(tmpPosts);
+    localStorage.setItem("categoryList", JSON.stringify(Object.keys(tmpPosts)));
   }
   
   useEffect(() => {

@@ -18,7 +18,8 @@ import {
   transformCell,
 } from "./handler";
 
-const MarkdownCell = ({ cellUuid }) => {
+const MarkdownCell = (props) => {
+  const { cellUuid } = props;
   const { state } = useContext(CellContext);
   const dispatch = useContext(CellDispatchContext);
   const {

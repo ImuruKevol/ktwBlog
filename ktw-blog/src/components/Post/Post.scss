@@ -9,20 +9,21 @@
   overflow: hidden;
   @include clear;
   
-  $header-height: 50px;
+  $header-height: 85px;
+  $header-title-height: 50px;
   header {
     height: $header-height;
     padding-right: 15px;
     
-    input {
+    .title {
       background-color: inherit;
-      height: $header-height;
-      line-height: $header-height;
+      height: $header-title-height;
+      line-height: $header-title-height;
       font-size: 24px;
       width: calc(100% - 100px);
     }
 
-    input:focus {
+    .title:focus {
       box-sizing: border-box;
       outline: none;
       border: 1.5px solid rgba($color: #000000, $alpha: 0.2);
@@ -33,7 +34,7 @@
       width: 60px;
       padding: 0 10px;
       text-align: center;
-      line-height: $header-height;
+      line-height: $header-title-height;
       font-size: 18px;
     }
   }
@@ -44,7 +45,7 @@
     position: relative;
     padding: 0 0.5em;
     width: 100%;
-    height: calc(100% - #{$header-height});
+    height: calc(100% - #{$header-title-height});
     overflow-y: auto;
 
     // scroll

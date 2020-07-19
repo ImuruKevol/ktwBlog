@@ -301,7 +301,16 @@ const cellReducerHandler = {
       ...state,
       isLoading: false,
     }
-  }
+  },
+
+  [CELL_ACTION.DOCUMENT.CATEGORY.CHANGE]: (state, action) => {
+    const { category } = action;
+    return {
+      ...state,
+      category,
+      changedCategory: true,
+    }
+  },
 };
 
 const cellReducer = (state, action) => {

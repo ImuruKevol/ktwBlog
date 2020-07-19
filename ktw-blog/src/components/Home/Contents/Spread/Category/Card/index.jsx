@@ -5,7 +5,9 @@ import './Card.scss';
 const Card = ({ category, docId, title, subtitle }) => {
   return (
     <Link
-      to={`/imurukevol/${category}/${docId}`}
+      to={{
+        pathname: `/imurukevol/${category}/${docId}`,
+      }}
       className="card"
     >
       {/* //todo 썸네일 추가? */}

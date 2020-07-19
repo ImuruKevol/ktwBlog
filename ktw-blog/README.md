@@ -46,6 +46,10 @@ GraphQL을 써볼까...
 
 - 셀 이동시 커서 위치 저장하기?
 
+- BE에 세션별로 큐를 두고 동일 명령이 연속적으로 일정 시간 내로 반복적으로 요청될 경우 처리하기
+
+- 저장할 때 변경한 점 모달로 보여주기
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -1,0 +1,19 @@
+@charset 'utf-8';
+
+@import '../../../../public/style/common';
+
+.command_bar {
+  height: 30px;
+  @include clear;
+
+  & * {
+    vertical-align: top;
+    height: 30px;
+    background-color: inherit;
+    border: 1px solid black;
+  }
+
+  .save {
+    float: right;
+  }
+}

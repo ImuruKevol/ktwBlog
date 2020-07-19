@@ -56,6 +56,7 @@ const EditorComponent = ({ userId, category, docId }) => {
     blockRelease(dispatch);
   }
 
+  //todo 새 글쓰기 모드일 때 포커스를 제목으로 가게 하기
   useEffect(() => {
     if (cellLength === 0) {
       dispatch(cellActionCreator.focusAttachRef(inputRef));
@@ -87,7 +88,7 @@ const EditorComponent = ({ userId, category, docId }) => {
 
   useKey(EVENT_TYPE.CTRL_S, documentSave);
 
-// todo 포스트 열었을 때 로딩 돌아가는 애니메이션 추가하기
+//todo 포스트 열었을 때 로딩 돌아가는 애니메이션 추가하기
   return (
     <div className="post-editor" onClick={(e) => {
       focusLastCell();
