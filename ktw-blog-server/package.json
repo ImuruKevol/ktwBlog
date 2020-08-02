@@ -11,11 +11,13 @@
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "~4.16.0",
+    "express-session": "^1.17.1",
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
     "mysql2": "^2.1.0",
     "nodemon": "^1.18.10",
-    "pug": "2.0.0-beta11"
+    "pug": "2.0.0-beta11",
+    "session-file-store": "^1.4.0"
   },
   "devDependencies": {
     "clean-css": "^4.2.3"
