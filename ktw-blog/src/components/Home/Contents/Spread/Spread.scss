@@ -1,1 +1,14 @@
 @charset 'utf-8';
+
+.spread {
+  
+  .no-content {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

@@ -33,19 +33,27 @@ const Spread = () => {
       url,
       method,
     }).then(res => {
-      categorize(res.data);
+      if(res.data.length > 0) {
+        categorize(res.data);
+      }
     });
   }, []);
 
   return (
     <div className="spread">
-      {Object.keys(posts).map(category => (
+      {Object.keys(posts).length > 0 ?
+      Object.keys(posts).map(category => (
         <Category
           key={"category-" + category}
           category={category}
           posts={posts[category]}
         />
-      ))}
+      ))
+      :
+      <a href="/imurukevol/new" className="no-content">
+        포스트가 없습니다.<br />새 글을 등록해보세요.
+      </a>
+      }
     </div>
   )
 }
