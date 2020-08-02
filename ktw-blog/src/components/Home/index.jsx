@@ -1,9 +1,10 @@
-import React from 'react'
-import './Home.scss'
+import React from "react";
+import "./Home.scss";
 
-import Menu from './Menu'
-import Contents from './Contents'
-import Notification from "./Notification"
+import Menu from "./Menu";
+import Login from "./Login";
+import Contents from "./Contents";
+import Notification from "./Notification";
 
 // todo noti store 만들기
 const Home = () => {
@@ -11,11 +12,12 @@ const Home = () => {
     <main>
       {/* <NotificationStore> */}
         <Menu />
-        <Contents />
+        <Login />
+        {/* <Contents /> */}
         <Notification />
       {/* </NotificationStore> */}
     </main>
   )
 }
 
-export default Home
+export default Home;

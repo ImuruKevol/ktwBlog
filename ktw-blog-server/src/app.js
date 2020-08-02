@@ -12,10 +12,16 @@ const userRouter = require('./routes/user');
 // middleware
 const auth = require('./middle/authentification');
 
-// session
-const session = require('express-session');
-const FileStore = require('session-file-store')(session);
-const sessionData = require('./db/session');
+// Auth
+const redis = require("redis");
+const session = require("express-session");
+const RedisStore = require("connect-redis")(session);
+const sessionInfo = require("./auth/session");
+const client = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_SERVER);
+//passport
+const passport = require('passport');
+const flash = require('connect-flash');
+const passportConfig = require('./auth/passport');
 
 const app = express();
 
@@ -27,9 +33,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// set session
-sessionData.store = new FileStore();
-app.use(session(sessionData));
+// Session
+sessionInfo.store = new RedisStore({
+  client: client,
+  logErrors: true
+});
+app.use(session(sessionInfo));
+
+// Passport
+app.use(flash());
+app.use(passportConfig);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // set middleware
 app.use(auth.authSession);

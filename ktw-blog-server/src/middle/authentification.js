@@ -8,12 +8,4 @@ router.authSession = function(req, res, next){
     next();
 }
 
-
-// const loginDB = require('');
-// const checkAuth = function(id, pw){
-//     // check ~~
-
-//     return true;
-// }
-
 module.exports = router;

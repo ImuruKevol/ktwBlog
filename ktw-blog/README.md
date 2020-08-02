@@ -5,15 +5,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - create .env.development * .env.production
 ```
 REACT_APP_SERVER_URL="YOUR_SERVER_URL"
+REACT_APP_SALT_NUMBER=YOUR_CRYPTO_SALT_ITERATE_NUMBER
 ```
 
+## todo
 
-
-## 메모장
-
-Spread: 사이트 접속시 보여지는 컨텐츠(글들 쫙 그냥 뿌려줌)
-GraphQL을 써볼까...
-
+- Login에 자동 로그인 추가
+  - 로그인 후 유저 ID와 로그아웃 버튼 추가
+- 회원가입은 버튼만 만들어두고 alert로 직접 연락하라고 하기
 
 ## 개선할 점(생각나는대로 추가)
 
@@ -43,11 +42,7 @@ GraphQL을 써볼까...
 
 - styled component와 scss의 역할을 구분하고 styled component 위치 정리하기
 
-- db repl 서버도 두면 갠춘할듯
-
 - 셀 이동시 커서 위치 저장하기?
-
-- 저장할 때 변경한 점 모달로 보여주기(변경 없을 때는 저장 프로세스 실행 안함)
 
 ## Available Scripts
 

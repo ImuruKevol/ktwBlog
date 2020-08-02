@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+.login {
+  height: 100%;
+  padding-top: 15%;
+  text-align: center;
+
+  strong {
+    display: block;
+    font-size: 24px;
+    line-height: 48px;
+  }
+
+  .form {
+
+    input {
+      display: block;
+      width: 300px;
+      margin: 0 auto;
+      padding: 0 8px;
+      font-size: 20px;
+      line-height: 30px;
+    }
+
+    input + input {
+      margin-top: 10px;
+    }
+
+    input[type="submit"]:hover {
+      background: #bf7777;
+    }
+  }
+}
