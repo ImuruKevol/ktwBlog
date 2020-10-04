@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "./Notification.scss";
 
 const Notification = () => {
-  // todo store state로 바꾸기
-  const [show, setShow] = useState(false);
   
   return (
-    show && <section className="notification">
+    <section className="notification">
       <strong>Notification</strong>
       <div>
         {/* map으로 컴포넌트 뿌리기 */}

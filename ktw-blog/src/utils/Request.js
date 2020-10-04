@@ -10,7 +10,10 @@ const defaultOptions = {
   header: {
     Accept: "application/json",
     "Content-Type": "application/json",
+    Cache: "no-cache",
   },
+  withCredentials: true,
+  credentials: 'include',
 };
 
 /**
@@ -19,7 +22,7 @@ const defaultOptions = {
  * 
  * example
  * 
- * url: 'document/imurukevol/1',
+ * url: 'document/{userId}/{documentId}',
  * 
  * method: 'get' // or post or patch or delete or etc...
  * 
@@ -34,8 +37,15 @@ const request = async (opts) => {
     url: `${SERVER_API}/${opts.url}`,
     validateStatus: () => true,
   };
-  const response = await axios(options);
-  return response;
+  const response = await axios(options)
+  if(response.status === 200) {
+    return response.data === "" ? true : response.data;
+  }
+  if(response.status === 401) {
+    localStorage.removeItem("userId");
+    window.location.href = "/";
+  }
+  throw new Error("Request Error");
 }
 
 export { request };

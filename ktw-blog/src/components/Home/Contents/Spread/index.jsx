@@ -32,11 +32,11 @@ const Spread = () => {
     request({
       url,
       method,
-    }).then(res => {
-      if(res.data.length > 0) {
-        categorize(res.data);
+    }).then(data => {
+      if(data.length > 0) {
+        categorize(data);
       }
-    });
+    }).catch(err => {console.error(err)});
   }, []);
 
   return (

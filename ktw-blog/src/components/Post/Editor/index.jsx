@@ -65,12 +65,12 @@ const EditorComponent = ({ userId, category, docId }) => {
         request({
           url,
           method,
-        }).then(res => {
-          const {title, content} = res.data;
+        }).then(data => {
+          const {title, content} = data;
           dispatch(cellActionCreator.init(category, title, content, docId));
           dispatch(cellActionCreator.load());
           focusLastCell();
-        });
+        }).catch(err => {console.error(err)});;
       }
       else {
         dispatch(cellActionCreator.init());
