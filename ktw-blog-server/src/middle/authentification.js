@@ -10,18 +10,19 @@ const router = express.Router();
 // }
 
 router.verify = (req, res, next) => {
-    if(req.isAuthenticated()) {
-        return next();
+    // if(req.isAuthenticated()) {
+    //     return next();
+    // }
+    // res.status(401).send();
+    
+    if(req.session.passport && req.session.passport.user) {
+        // session expires 갱신
+        // console.log(req.session.cookie.expires);
+        next();
     }
-    res.status(401).send();
-    // if(req.session.passport && req.session.passport.user && req.session.passport.user.userId) {
-    //     // session expires 갱신
-    //     console.log(req.session.cookie.expires);
-    //     next();
-    // }
-    // else {
-    //     res.status(401).send();
-    // }
+    else {
+        res.status(401).send();
+    }
 }
 
 module.exports = router;

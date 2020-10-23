@@ -43,6 +43,7 @@ const request = async (opts) => {
   }
   if(response.status === 401) {
     localStorage.removeItem("userId");
+    localStorage.setItem("login", false);
     window.location.href = "/";
   }
   throw new Error("Request Error");

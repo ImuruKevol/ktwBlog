@@ -2,6 +2,7 @@ const api = {
   USER: {
     LOGIN_SALT: (userId) => [`user/${userId}/salt`, "get"],
     LOGIN: () => ["user/login", "post"],
+    VERIFY: () => ["user/verify", "get"],
   },
   CATEGORY: {
     LIST: (userId) => [`user/${userId}/list`, "get"],

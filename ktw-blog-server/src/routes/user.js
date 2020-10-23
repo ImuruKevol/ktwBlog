@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require("passport");
 
 const { userCtl } = require('../controller');
+const { verify } = require('../middle/authentification');
 const { asyncWrap } = require('../utils');
 
 router
@@ -16,8 +17,10 @@ router
   .route('/failed')
   .get(asyncWrap(userCtl.failed));
 
+router.get('/verify', verify, asyncWrap(userCtl.verify));
+
 router
-  .get('/:userId/list',
-  asyncWrap(userCtl.list));
+  // .use(verify)
+  .get('/:userId/list', verify, asyncWrap(userCtl.list));
 
 module.exports = router;
