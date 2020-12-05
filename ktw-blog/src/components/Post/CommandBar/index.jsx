@@ -12,7 +12,7 @@ const CommandBar = () => {
   const { category } = state;
   const [isNew, setIsNew] = useState(false);
   const [crtCategory, setCrtCategory] = useState("");
-  const categoryList = JSON.parse(localStorage.getItem("categoryList"));
+  const categoryList = JSON.parse(localStorage.getItem("categoryList")) || [];
 
   const changeCategory = (category) => {
     dispatch(cellActionCreator.categoryChange(category));

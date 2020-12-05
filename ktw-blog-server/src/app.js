@@ -52,8 +52,8 @@ app.use(passport.session());
 // app.use(auth.checkExpired);
 
 // routing
-app.use('/user', userRouter);
-app.use('/document', documentRouter);
+app.use('/api/user', userRouter);
+app.use('/api/document', documentRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
