@@ -24,4 +24,4 @@ modify dotenv loader in /bin/www
 - post 공유 기능
   - db에 uuid 저장하고, 그 uuid를 url에 담아서 오면 열람 가능하게
 
-- salt 주기적으로 바꾸는 배치 생성
+- accessToken 생성 방식 변경하기

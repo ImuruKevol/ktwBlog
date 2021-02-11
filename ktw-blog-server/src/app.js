@@ -8,9 +8,6 @@ const cors = require('cors');
 const userRouter = require('./routes/user');
 const documentRouter = require('./routes/document');
 
-// middleware
-const auth = require('./middle/authentification');
-
 // Auth
 const redis = require("redis");
 const session = require("express-session");

@@ -1,26 +1,25 @@
 const express = require('express');
 const router = express.Router();
-const passport = require("passport");
-
 const { userCtl } = require('../controller');
-const { verify } = require('../middle/authentification');
 const { asyncWrap } = require('../utils');
+const { verify } = require('../middle/authentification');
+const { login } = require('../auth/passport');
 
 router
   .route('/:userId/salt')
   .get(asyncWrap(userCtl.salt));
 
 router
-  .post('/login', passport.authenticate('local', {failureRedirect: '/user/failed'}), asyncWrap(userCtl.login));
+  .post('/login', login, userCtl.login);
+
+router
+  .get('/:userId/logout', asyncWrap(userCtl.logout));
 
 router
   .route('/failed')
-  .get(asyncWrap(userCtl.failed));
-
-router.get('/verify', verify, asyncWrap(userCtl.verify));
+  .get(userCtl.failed);
 
 router
-  // .use(verify)
   .get('/:userId/list', verify, asyncWrap(userCtl.list));
 
 module.exports = router;

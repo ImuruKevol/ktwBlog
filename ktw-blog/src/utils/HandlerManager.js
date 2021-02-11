@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { EVENT_TYPE } from "../enums";
 
 const KEY_TYPE = {
@@ -360,4 +360,24 @@ const useKeys = (
   }, [isFocus, ...deps]);
 };
 
-export { useKey, useKeys, attachDefaultHandlers, getChecksumAllFalse };
+const useInterval = (callback, delay) => {
+  const savedCallback = useRef();
+
+  // Remember the latest callback.
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  // Set up the interval.
+  useEffect(() => {
+    const tick = () => {
+      savedCallback.current();
+    }
+    if (delay !== null) {
+      let id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+}
+
+export { useKey, useKeys, attachDefaultHandlers, getChecksumAllFalse, useInterval };

@@ -31,6 +31,23 @@ module.exports = {
     }
   },
 
+  async logout(userId) {
+    const qs = `update user set accessToken = null where userId = ?`;
+    const result = await query(qs, [userId]);
+    return result[0];
+  },
+
+  async checkAccessToken(userId, accessToken) {
+    const qs = `select accessToken from user where userId = ?`;
+    const result = await query(qs, [userId]);
+    if(result.length === 1 && result[0].accessToken === accessToken) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  },
+
   async list(userId) {
     const qs = `select category, docId, title, subtitle from post where userId = ?`;
     const result = await query(qs, [userId]);

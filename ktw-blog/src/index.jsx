@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import dotenv from 'dotenv';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import { THEME } from "./enums";
 import Header from './components/Header';
+import Login from "./components/Home/Login";
 import Home from './components/Home';
 import Footer from './components/Footer';
 import SimpleModal from "./components/common/SimpleModal";
+import { LoginStore } from "./stores/LoginStore";
 import * as serviceWorker from './serviceWorker';
 import './index.scss';
 
@@ -22,11 +24,16 @@ const GlobalStyle = createGlobalStyle`
 
 ReactDOM.render(
   <BrowserRouter>
-    <GlobalStyle />
-    <SimpleModal />
-    <Header />
-    <Home />
-    <Footer />
+    <LoginStore>
+      <GlobalStyle />
+      <SimpleModal />
+      <Header />
+      <Switch>
+        <Route exact path="/login" component={Login} />
+        <Route component={Home} />
+      </Switch>
+      <Footer />
+    </LoginStore>
   </BrowserRouter>,
   document.getElementById('root')
 );

@@ -1,5 +1,6 @@
 // import createDebug from "debug";
 import axios from "axios";
+import { API } from "../enums";
 
 // const debug = createDebug("boost:request");
 
@@ -10,7 +11,6 @@ const defaultOptions = {
   header: {
     Accept: "application/json",
     "Content-Type": "application/json",
-    Cache: "no-cache",
   },
   withCredentials: true,
   credentials: 'include',
@@ -37,16 +37,18 @@ const request = async (opts) => {
     url: `${SERVER_API}/${opts.url}`,
     validateStatus: () => true,
   };
-  const response = await axios(options)
+  const response = await axios(options);
   if(response.status === 200) {
     return response.data === "" ? true : response.data;
   }
-  if(response.status === 401) {
-    localStorage.removeItem("userId");
-    localStorage.setItem("login", false);
-    window.location.href = "/";
-  }
+  window.location.href = "/login";
   throw new Error("Request Error");
 }
 
-export { request };
+const logout = async (userId) => {
+  const [url, method] = API.USER.LOGOUT(userId);
+  await request({url, method});
+  window.location.href = "/login";
+}
+
+export { request, logout };
