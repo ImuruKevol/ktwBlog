@@ -20,7 +20,6 @@ const Header = () => {
     setTime(time - 1);
   }, userId?1000:null);
 
-  // TODO time을 LoginStore로 빼서 페이지 이동 및 동작이 있을 때마다 초기화시키기 or 초기화 버튼 만들기
   useEffect(() => {
     if(time === 0) logout();
   }, [time]);

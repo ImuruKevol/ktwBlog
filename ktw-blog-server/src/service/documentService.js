@@ -9,6 +9,7 @@ const { query } = require('../db');
  */
 
 module.exports = {
+  // todo sequence 만들어서 그걸로 하기
   async new(userId, category, title, content) {
     const parsedContent = JSON.parse(content);
     const subtitle = parsedContent.length >= 2 ?

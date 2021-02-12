@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import Menu from "./Menu";
 import Contents from "./Contents";
-import Notification from "./Notification";
+// import Notification from "./Notification";
 import { LoginContext, LoginDispatchContext } from "../../stores/LoginStore";
 import { loginActionCreator } from "../../actions/LoginAction";
 import "./Home.scss";
@@ -24,7 +24,7 @@ const Home = () => {
       {/* <NotificationStore> */}
         <Menu />
         <Contents />
-        <Notification />
+        {/* <Notification /> */}
       {/* </NotificationStore> */}
     </main>
   )

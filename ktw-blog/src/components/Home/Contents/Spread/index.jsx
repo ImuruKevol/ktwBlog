@@ -8,8 +8,10 @@ import './Spread.scss'
 const Spread = () => {
   const { state } = useContext(LoginContext);
   const { userId } = state;
+  // todo to redux
   const [posts,  setPosts] = useState({});
 
+  // todo 페이지네이션
   const categorize = (list) => {
     let tmpPosts = {};
     list.map(item => {
@@ -37,8 +39,7 @@ const Spread = () => {
         categorize(data);
       }
     }).catch(err => {
-      console.error(err);
-      logout();
+      if(userId) logout(userId);
     });
   }, []);
 
@@ -53,7 +54,7 @@ const Spread = () => {
         />
       ))
       :
-      <a href="/imurukevol/new" className="no-content">
+      <a href={`/${userId}/new`} className="no-content">
         포스트가 없습니다.<br />새 글을 등록해보세요.
       </a>
       }

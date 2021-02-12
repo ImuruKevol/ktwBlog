@@ -266,8 +266,9 @@ const cellReducerHandler = {
     };
   },
 
-  [CELL_ACTION.DOCUMENT.SAVE]: (state) => {
+  [CELL_ACTION.DOCUMENT.SAVE]: (state, action) => {
     const { cellManager, title, category, docId, changedCategory } = state;
+    const { userId } = action;
 
     //todo 바뀐 점 체크하여 컨펌 창 띄울지 말지, 띄워졌을 때는 어떤 것이 바뀌었는지 표시하기
     // // eslint-disable-next-line no-restricted-globals
@@ -275,7 +276,6 @@ const cellReducerHandler = {
     // console.log(ok)
     const content = cellManager.createMarkdownDocument();
     //todo userId는 session으로 바꾸기
-    const userId = "imurukevol";
     let api = null;
     if(docId === null) {
       api = API.DOCUMENT.NEW;

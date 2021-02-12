@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
+import { LoginContext } from "../../../stores/LoginStore";
 import { useKey } from "../../../utils/HandlerManager";
 import { EVENT_TYPE } from "../../../enums";
 import './Menu.scss'
 
 const Menu = () => {
+  const { state } = useContext(LoginContext);
+  const { userId } = state;
   const [menu, setMenu] = useState(false);
 
   const onClickMenu = () => {
@@ -19,17 +22,11 @@ const Menu = () => {
         menu? "main_menu on" : "main_menu close"
       }>
         <li>
-          {/* //todo userId 세션에서 가져오기 */}
-          <Link to="/imurukevol/new" onClick={() => {
+          <Link to={`/${userId}/new`} onClick={() => {
             onClickMenu();
           }}>
             새 글 쓰기
           </Link>
-          {/* <a href="/imurukevol/new" onClick={() => {
-            onClickMenu();
-          }}>
-            새 글 쓰기
-          </a> */}
         </li>
       </ul>
       <button

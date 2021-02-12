@@ -2,11 +2,14 @@ import React, { useState, useEffect, useContext } from 'react';
 
 import { CellContext, CellDispatchContext } from "../../../stores/CellStore";
 import { cellActionCreator } from "../../../actions/CellAction";
+import { LoginContext } from "../../../stores/LoginStore";
 
 import './CommandBar.scss';
 
 const CommandBar = () => {
   const { state } = useContext(CellContext);
+  const loginState = useContext(LoginContext).state;
+  const { userId } = loginState;
   const dispatch = useContext(CellDispatchContext);
 
   const { category } = state;
@@ -71,7 +74,7 @@ const CommandBar = () => {
       <button
         className="save"
         onClick={() => {
-          dispatch(cellActionCreator.save());
+          dispatch(cellActionCreator.save(userId));
         }}
       >
         SAVE

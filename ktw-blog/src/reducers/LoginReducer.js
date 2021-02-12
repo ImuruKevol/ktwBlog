@@ -17,7 +17,7 @@ const loginReducerHandler = {
   [LOGIN_ACTION.LOGOUT]: (state) => {
     const { userId } = state;
     debug("logout", userId);
-    logout();
+    logout(userId);
     return {
       ...state,
       userId: null,

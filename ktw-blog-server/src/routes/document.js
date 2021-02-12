@@ -8,10 +8,12 @@ const { asyncWrap } = require('../utils');
 router.use(verify);
 
 router
+  .post('/:userId/:category/new', asyncWrap(docCtl.new));
+
+router
   .route('/:userId/:category/:docId')
-  .post(asyncWrap(docCtl.new))
   .get(asyncWrap(docCtl.load))
-  .patch(asyncWrap(docCtl.save))
+  .post(asyncWrap(docCtl.save))
   .delete(asyncWrap(docCtl.delete))
 
 module.exports = router;

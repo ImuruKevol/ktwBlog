@@ -260,9 +260,10 @@ const cellActionCreator = {
   /**
    * 현재 문서를 저장한다.
    */
-  save() {
+  save(userId) {
     return {
       type: CELL_ACTION.DOCUMENT.SAVE,
+      userId,
     }
   },
 

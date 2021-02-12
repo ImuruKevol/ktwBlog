@@ -13,7 +13,6 @@ const Category = ({ category, posts }) => {
     <section className="category">
       <strong className="category-name">{category}</strong>
       {posts.map(post => (
-        //todo imurukevol 자리에 세션의 userId 넣기
         <Card
           key={`${category}-${post.docId}`}
           category={category}

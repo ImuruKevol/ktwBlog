@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef } from "react";
 
 import { CellContext, CellDispatchContext } from "../../../stores/CellStore";
 import { cellActionCreator } from "../../../actions/CellAction";
+import { LoginContext } from "../../../stores/LoginStore";
 import { setGenerator } from "./cells/CellGenerator";
 import { uuidManager, request } from "../../../utils";
 import {
@@ -30,6 +31,8 @@ setGenerator("blockquote", (uuid) => <QuoteCell cellUuid={uuid} />);
 
 const EditorComponent = ({ userId, category, docId }) => {
   const { state } = useContext(CellContext);
+  // const loginState = useContext(LoginContext).state;
+  // const { userId } = loginState;
   const dispatch = useContext(CellDispatchContext);
   const { cellManager, isLoading } = state;
   const { cells } = cellManager;
@@ -81,14 +84,12 @@ const EditorComponent = ({ userId, category, docId }) => {
   }, [category, dispatch, cellLength, cellManager, docId, userId]);
 
   //todo 저장 후 알림 띄우기
-  //todo subtitle 저장 하는 서식 정비하기(현재 1, 2째줄로 저장하고 있음.)
   const documentSave = () => {
-    dispatch(cellActionCreator.save());
+    dispatch(cellActionCreator.save(userId));
   }
 
   useKey(EVENT_TYPE.CTRL_S, documentSave);
 
-//todo 포스트 열었을 때 로딩 돌아가는 애니메이션 추가하기
   return (
     <div className="post-editor" onClick={(e) => {
       focusLastCell();

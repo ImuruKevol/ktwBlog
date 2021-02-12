@@ -18,7 +18,7 @@ const BackgroundTheme = styled.div`
   margin: 0 auto;
 `;
 
-const PostHeader = ({ isNew, category }) => {
+const PostHeader = ({ isNew }) => {
   const { state } = useContext(CellContext);
   const dispatch = useContext(CellDispatchContext);
   const { title } = state;
