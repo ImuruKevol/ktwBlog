@@ -31,11 +31,11 @@ const Header = () => {
       </Link>
       {userId &&
       <div className="login-info">
-        <span>{userId}</span>
-        <span>{time}</span>
-        <button onClick={logout}>Logout</button>
+        <span className="user-id">{userId}</span>
+        <span className="session-time">{time}</span>
+        <button className="btn-logout" onClick={logout}>Logout</button>
       </div>}
-      {/* <button onClick={logout}>Logout</button> */}
+      {process.env.NODE_ENV === "development"?<button onClick={logout}>Logout</button>:null}
     </header>
   )
 }

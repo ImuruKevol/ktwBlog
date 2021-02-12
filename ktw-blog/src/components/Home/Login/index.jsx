@@ -31,6 +31,9 @@ const Login = () => {
         dispatch(loginActionCreator.login(userId));
         history.push("/");
       }
+      else {
+        setError(true);
+      }
     }
     catch(err) {
       console.error(err);
@@ -46,7 +49,7 @@ const Login = () => {
   }
   
   return (
-  <section className="login">
+  <main className="login">
     <strong>Login</strong>
     <div className="form">
       <form>
@@ -67,7 +70,8 @@ const Login = () => {
         />
         {error?
         <div className="error-msg">
-          Login Failed
+          Login Failed.<br />
+          Check your ID or Password.
         </div>
         :null}
         <input
@@ -77,7 +81,7 @@ const Login = () => {
         />
       </form>
     </div>
-  </section>
+  </main>
   );
 }
 

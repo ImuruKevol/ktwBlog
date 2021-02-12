@@ -30,6 +30,7 @@ passport.use(
     },
     async (id, pw, done) => {
       const salt = await userSvc.getSalt(id);
+      if(!salt) return done(null, false);
       const encryptPW = await encrypt(pw, salt);
       const result = await userSvc.login(id, encryptPW);
       // fail

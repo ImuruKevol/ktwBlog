@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { API } from '../../../../enums'
-import { request } from '../../../../utils'
+import { request, logout } from '../../../../utils'
 
 import Category from './Category'
 import './Spread.scss'
@@ -36,7 +36,10 @@ const Spread = () => {
       if(data.length > 0) {
         categorize(data);
       }
-    }).catch(err => {console.error(err)});
+    }).catch(err => {
+      console.error(err);
+      logout();
+    });
   }, []);
 
   return (

@@ -10,7 +10,7 @@ import {
   useInterval,
 } from "./HandlerManager";
 import useCellState from "./useCellState";
-import { request } from "./Request";
+import { request, logout } from "./Request";
 import utils from "./Common";
 import modalManager from "./ModalManager";
 
@@ -27,5 +27,6 @@ export {
   useCellState,
   useReducerAsync,
   request,
+  logout,
   modalManager,
 };
