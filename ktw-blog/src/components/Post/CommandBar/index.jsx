@@ -27,15 +27,12 @@ const CommandBar = () => {
     }
   }, [category, categoryList]);
 
-  //todo 아토믹하게 컴포넌트 나누기
   return (
     <div className="command_bar">
-      {/* //todo undo */}
-      {/* <button>Undo</button> */}
       <select
+        value={category}
         onChange={(e) => {
           const {value} = e.target;
-          console.log(value)
           if(value === "new") {
             setIsNew(true);
             changeCategory("");
@@ -51,7 +48,6 @@ const CommandBar = () => {
           <option
             value={cate}
             key={`category-list-${idx}`}
-            selected={cate===category?true:false}
           >
             {cate}
           </option>

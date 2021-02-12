@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { LoginContext, LoginDispatchContext } from "../../stores/LoginStore";
 import { loginActionCreator } from "../../actions/LoginAction";
 import { useInterval } from "../../utils";
@@ -7,6 +7,7 @@ import './Header.scss'
 
 const Header = () => {
   const { state } = useContext(LoginContext);
+  const location = useLocation();
   const [time, setTime] = useState(3600);
   const { userId } = state;
   const dispatch = useContext(LoginDispatchContext);
@@ -23,6 +24,10 @@ const Header = () => {
   useEffect(() => {
     if(time === 0) logout();
   }, [time]);
+
+  useEffect(() => {
+    setTime(3600);
+  }, [location]);
 
   return (
     <header className="header">

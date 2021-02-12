@@ -1,4 +1,5 @@
 const { query } = require('../db');
+const { createSalt, encrypt } = require("../middle/authentification");
 
 //todo change to using seqalize
 /**
@@ -18,6 +19,19 @@ module.exports = {
     else {
       return null;
     }
+  },
+
+  async register(userId, pw) {
+    const duplCheckQuery = `select count(*) as cnt from user where userId = ?`;
+    const isDupl = await query(duplCheckQuery, [userId]);
+    if(isDupl[0].cnt === 1) {
+      return false;
+    }
+    const salt = await createSalt();
+    const encryptPW = await encrypt(pw, salt);
+    const qs = `insert into user (userId, password, salt) values(?, ?, ?)`;
+    const result = await query(qs, [userId, encryptPW, salt]);
+    return result;
   },
 
   async login(userId, pw) {

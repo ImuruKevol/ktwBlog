@@ -10,6 +10,9 @@ router
   .get(asyncWrap(userCtl.salt));
 
 router
+  .post('/register', asyncWrap(userCtl.register));
+
+router
   .post('/login', login, userCtl.login);
 
 router

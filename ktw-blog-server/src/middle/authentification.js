@@ -3,6 +3,12 @@ const crypto = require('crypto');
 const { userSvc } = require("../service");
 const router = express.Router();
 
+const createSalt = async () => {
+    const salt = await crypto.randomBytes(64).toString('base64');
+    return salt;
+}
+router.createSalt = createSalt;
+
 const encrypt = (value, salt) => {
     return new Promise((resolve, reject) => {
         crypto.pbkdf2(value, salt, process.env.SALT_NUMBER*1, 64, "sha512", (err, hash) => {

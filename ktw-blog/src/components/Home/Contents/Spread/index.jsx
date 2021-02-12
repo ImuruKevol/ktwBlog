@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import { LoginContext } from '../../../../stores/LoginStore';
 import { API } from '../../../../enums'
 import { request, logout } from '../../../../utils'
-
 import Category from './Category'
 import './Spread.scss'
 
 const Spread = () => {
-  //todo 세션 or 쿠키에서 userId 받아오기. BE에서는 둘다 체크할거임
+  const { state } = useContext(LoginContext);
+  const { userId } = state;
   const [posts,  setPosts] = useState({});
-  const userId = "imurukevol";
 
   const categorize = (list) => {
     let tmpPosts = {};
